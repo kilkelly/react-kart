@@ -1,0 +1,72 @@
+{
+  "name": "react-kart",
+  "version": "1.0.0",
+  "description": "A fun kart betting game made with React!",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "better-npm-run start",
+    "start:dev": "node devServer"
+  },
+  "betterScripts": {
+    "start": {
+      "command": "node src/index.js",
+      "env": {
+        "NODE_ENV": "production",
+        "MIN_EXT": ".min"
+      }
+    }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kilkelly/react-kart.git"
+  },
+  "keywords": [
+    "React",
+    "Redux",
+    "React",
+    "Router",
+    "Webpack",
+    "CSSModules",
+    "PostCSS",
+    "Babel"
+  ],
+  "author": "Frank Kilkelly",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/kilkelly/react-kart/issues"
+  },
+  "homepage": "https://github.com/kilkelly/react-kart#readme",
+  "dependencies": {
+    "classnames": "^2.2.3",
+    "react": "^0.14.8",
+    "react-dom": "^0.14.8",
+    "react-redux": "^4.4.1",
+    "react-router": "^2.0.1",
+    "react-router-redux": "^4.0.1",
+    "redux": "^3.3.1"
+  },
+  "devDependencies": {
+    "autoprefixer": "^6.3.6",
+    "babel-core": "^6.7.4",
+    "babel-loader": "^6.2.4",
+    "babel-plugin-react-transform": "^2.0.2",
+    "babel-preset-es2015": "^6.6.0",
+    "babel-preset-react": "^6.5.0",
+    "babel-preset-react-hmre": "^1.1.1",
+    "babel-register": "^6.7.2",
+    "better-npm-run": "0.0.8",
+    "css-loader": "^0.23.1",
+    "express": "^4.13.4",
+    "extract-text-webpack-plugin": "^1.0.1",
+    "html-webpack-plugin": "^2.15.0",
+    "postcss-loader": "^0.8.2",
+    "redux-devtools": "^3.2.0",
+    "redux-logger": "^2.6.1",
+    "rimraf": "^2.5.2",
+    "style-loader": "^0.13.1",
+    "webpack": "^1.12.14",
+    "webpack-dev-middleware": "^1.6.1",
+    "webpack-hot-middleware": "^2.10.0"
+  }
+}
