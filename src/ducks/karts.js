@@ -1,6 +1,7 @@
 "use strict"
 
 import clone from "clone"
+import { NUMBER_OF_KARTS } from "../core/constants"
 
 // The Ducks File Structure for Redux
 // - https://medium.com/@scbarrus/the-ducks-file-structure-for-redux-d63c41b7035c#.6rrizzva3
@@ -12,45 +13,43 @@ const WINS_INCREMENT = "react-kart/karts/WINS_INCREMENT"
 const LOSSES_INCREMENT = "react-kart/karts/LOSSES_INCREMENT"
 const SELECT_KART = "react-kart/karts/SELECT_KART"
 
-export const NUMBER_OF_KARTS = 4
-
 // REDUCER
 // ----------------------------------------------------------------
 
 /**
-	@karts - state of karts
+	@state - state of karts
 	@action - action to be peformed on karts
 */
-export default function reducer(karts = createInitialKarts(NUMBER_OF_KARTS), action) {	
+export default function reducer(state = createInitialKarts(NUMBER_OF_KARTS), action) {	
 
-	let kartsToReturn // some actions will need this variable to copy existing karts
-	let kartToChange // some actions will need this variable to change a kart's value/s
+	let stateClone // some actions will need this variable to clone existing state into
+	let objectToChange // some actions will need this variable to change a state object's value/s
 
 	switch (action.type) {
 		case WINS_INCREMENT:
 
-			kartsToReturn = clone(karts) // clone state to avoid mutation
-			kartToChange = kartsToReturn[action.kartId - 1]
+			stateClone = clone(state) // clone state to avoid mutation
+			objectToChange = stateClone[action.kartId]
 
-			kartToChange.wins = kartToChange.wins + 1
-			
-			return kartsToReturn
+			objectToChange.wins = objectToChange.wins + 1
+
+			return stateClone
 
 		case LOSSES_INCREMENT:
 
-			kartsToReturn = clone(karts) // clone state to avoid mutation
-			kartToChange = kartsToReturn[action.kartId - 1]
+			stateClone = clone(state) // clone state to avoid mutation
+			objectToChange = stateClone[action.kartId]
 
-			kartToChange.losses = kartToChange.losses + 1
+			objectToChange.losses = objectToChange.losses + 1
 
-			return kartsToReturn
+			return stateClone
 
 		case SELECT_KART:
 
-			return selectKartWithinKarts(karts, action.kartId)
+			return selectKartWithinKarts(state, action.kartId)
 
 		default:
-			return karts
+			return state
 	}
 }
 
@@ -97,9 +96,9 @@ export function selectKart(kartId) {
 */
 export function createInitialKarts(numberOfKarts) {
 
-	let initialKarts = []
+	let initialKarts = {}
 
-	for (let i = 0; i < numberOfKarts - 1; i = i + 1) {
+	for (let i = 1; i <= numberOfKarts; i = i + 1) {
 		initialKarts[i] = { kartId: i, name: "kart" + i, image: "", wins: 0, losses: 0, selected: false }
 	}
 
@@ -117,10 +116,12 @@ export function selectKartWithinKarts(prevKarts, kartId) {
 	let nextKarts = clone(prevKarts) // make copy of karts to keep function pure
 
 	// cancel previous kart selection
-	nextKarts.map(kart => kart.selected = false)
+	Object.keys(nextKarts).map(
+		kart => nextKarts[kart].selected = false
+	)
 
 	// select kart
-	nextKarts[kartId - 1].selected = true
+	nextKarts[kartId].selected = true
 	return nextKarts
 }
 
