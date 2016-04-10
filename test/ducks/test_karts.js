@@ -2,17 +2,23 @@
 
 import { expect } from "chai"
 import clone from "clone"
-import { NUMBER_OF_KARTS } from "../core/constants"
-import reducer,	{
-		winsIncrement,
-		lossesIncrement,
-		selectKart,
-		createInitialKarts,		// used for testing purposes
-		selectKartWithinKarts		// used for testing purposes
-	}
-	from "../../src/ducks/karts"
+import { 
+	NUMBER_OF_KARTS,
+	MOVE_KART_DISTANCE
+} from "../../src/core/constants"
 
-const initialKarts = createInitialKarts(NUMBER_OF_KARTS)		
+import reducer,	{
+	winsIncrement,
+	lossesIncrement,
+	selectKart,
+	moveKart,
+	moveKartsToStart,		
+	createInitialState,		// used for testing purposes
+	selectKartWithinKarts		// used for testing purposes
+}
+from "../../src/ducks/karts"
+
+const initialState = createInitialState(NUMBER_OF_KARTS)		
 const kartId = 1 // kart to test with
 
 //--------------------------------------------------------------------------------
@@ -22,16 +28,16 @@ describe('"karts" reducer', () => {
 	describe("wins", () => {
 		it("incremented", () => {
 						
-			const prevKarts = clone(initialKarts)
+			const prevState = clone(initialState)
 
-			//* create expected karts to see after action takes place
-			let expectedKarts = clone(initialKarts)
-			expectedKarts[kartId].wins = expectedKarts[kartId].wins + 1
+			//** create expected karts to see after action takes place
+			let expectedState = clone(initialState)
+			expectedState[kartId].wins = expectedState[kartId].wins + 1
 			//*
 
-			const nextKarts = reducer(prevKarts, winsIncrement(kartId))
+			const nextState = reducer(prevState, winsIncrement(kartId))
 
-			expect(nextKarts).to.deep.equal(expectedKarts)
+			expect(nextState).to.deep.equal(expectedState)
 		})
 	})	
 
@@ -40,16 +46,16 @@ describe('"karts" reducer', () => {
 	describe("losses", () => {
 		it("incremented", () => {		
 
-			const prevKarts = clone(initialKarts)
+			const prevState = clone(initialState)
 
-			//* create expected karts to see after action takes place
-			let expectedKarts = clone(initialKarts)
-			expectedKarts[kartId].losses = expectedKarts[kartId].losses + 1
+			//** create expected karts to see after action takes place
+			let expectedState = clone(initialState)
+			expectedState[kartId].losses = expectedState[kartId].losses + 1
 			//*
 
-			const nextKarts = reducer(prevKarts, lossesIncrement(kartId))
+			const nextState = reducer(prevState, lossesIncrement(kartId))
 						
-			expect(nextKarts).to.deep.equal(expectedKarts)
+			expect(nextState).to.deep.equal(expectedState)
 		})				
 	})	
 
@@ -58,23 +64,25 @@ describe('"karts" reducer', () => {
 	describe("selection", () => {
 		it("correct kart selected", () => {		
 			
-			const prevKarts = clone(initialKarts)
-			const nextKarts = reducer(prevKarts, selectKart(kartId)) // select kart which has the supplied Id
+			const prevState = clone(initialState)
+			const nextState = reducer(prevState, selectKart(kartId)) // select kart which has the supplied Id
 			
-			expect(nextKarts[kartId].selected).to.equal(true)
+			expect(nextState[kartId].selected).to.equal(true)
 		})
+
+		//--------------------------------------------------------
 
 		it("only one kart can be selected at a time", () => {		
 			
-			const prevKarts = clone(initialKarts)
-			const nextKarts = reducer(prevKarts, selectKart(kartId)) // select kart which has the supplied Id
+			const prevState = clone(initialState)
+			const nextState = reducer(prevState, selectKart(kartId)) // select kart which has the supplied Id
 			
-			const numOfSelectedKarts = Object.keys(nextKarts).filter(
-				kart => nextKarts[kart].selected === true
+			const numOfSelectedKarts = Object.keys(nextState).filter(
+				kart => nextState[kart].selected === true
 			).length
 
-			const numOfUnselectedKarts = Object.keys(nextKarts).filter(
-				kart => nextKarts[kart].selected === false
+			const numOfUnselectedKarts = Object.keys(nextState).filter(
+				kart => nextState[kart].selected === false
 			).length			
 
 			expect(numOfSelectedKarts).to.equal(1)
@@ -82,5 +90,42 @@ describe('"karts" reducer', () => {
 		})		
 
 	})
+
+	//--------------------------------------------------------
+
+	describe("movement", () => {
+		it("kart moved", () => {			
+
+			const prevState = clone(initialState)
+			const nextState = reducer(prevState, moveKart(kartId, MOVE_KART_DISTANCE))			
+
+			expect(nextState[kartId].distance).to.equal(MOVE_KART_DISTANCE)
+		})
+
+		//--------------------------------------------------------
+
+		it("all karts moved back to start", () => {			
+
+			const prevState = clone(initialState)
+			
+			//** set some distances for karts in order to see if they are reset
+			// correctly after the reducer action
+			for (let i = 1; i <= NUMBER_OF_KARTS; i = i + 1) {
+				prevState[i].distance = 22
+			}
+			//*
+
+			const nextState = reducer(prevState, moveKartsToStart())			
+
+			//** create expected kart distances to see after reset action takes place
+			let expectedKartDistances = {}			
+			for (let i = 1; i <= NUMBER_OF_KARTS; i = i + 1) {
+				expect(nextState[i].distance).to.equal(0)
+			}
+			//*		
+
+		})
+
+	})			
 
 })

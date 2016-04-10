@@ -1,7 +1,11 @@
 "use strict"
 
 import clone from "clone"
-import { NUMBER_OF_KARTS } from "../core/constants"
+
+import { 
+	NUMBER_OF_KARTS,
+	MOVE_KART_DISTANCE
+} from "../core/constants"
 
 // The Ducks File Structure for Redux
 // - https://medium.com/@scbarrus/the-ducks-file-structure-for-redux-d63c41b7035c#.6rrizzva3
@@ -12,6 +16,8 @@ import { NUMBER_OF_KARTS } from "../core/constants"
 const WINS_INCREMENT = "react-kart/karts/WINS_INCREMENT"
 const LOSSES_INCREMENT = "react-kart/karts/LOSSES_INCREMENT"
 const SELECT_KART = "react-kart/karts/SELECT_KART"
+const MOVE_KART = "react-kart/karts/MOVE_KART"
+const MOVE_KARTS_TO_START = "react-kart/karts/MOVE_KARTS_TO_START"
 
 // REDUCER
 // ----------------------------------------------------------------
@@ -20,7 +26,7 @@ const SELECT_KART = "react-kart/karts/SELECT_KART"
 	@state - state of karts
 	@action - action to be peformed on karts
 */
-export default function reducer(state = createInitialKarts(NUMBER_OF_KARTS), action) {	
+export default function reducer(state = createInitialState(NUMBER_OF_KARTS), action) {	
 
 	let stateClone // some actions will need this variable to clone existing state into
 	let objectToChange // some actions will need this variable to change a state object's value/s
@@ -35,6 +41,7 @@ export default function reducer(state = createInitialKarts(NUMBER_OF_KARTS), act
 
 			return stateClone
 
+		// -----------------------------------------------------
 		case LOSSES_INCREMENT:
 
 			stateClone = clone(state) // clone state to avoid mutation
@@ -44,9 +51,31 @@ export default function reducer(state = createInitialKarts(NUMBER_OF_KARTS), act
 
 			return stateClone
 
+		// -----------------------------------------------------
 		case SELECT_KART:
 
 			return selectKartWithinKarts(state, action.kartId)
+
+		// -----------------------------------------------------
+		case MOVE_KART:
+
+			stateClone = clone(state) // clone state to avoid mutation
+
+			objectToChange = stateClone[action.kartId]
+			objectToChange.distance = objectToChange.distance + action.distanceToMove
+
+			return stateClone			
+
+		// -----------------------------------------------------
+		case MOVE_KARTS_TO_START:
+
+			stateClone = clone(state) // clone state to avoid mutation
+
+			for (let i = 1; i <= NUMBER_OF_KARTS; i = i + 1) {
+				stateClone[i].distance = 0
+			}
+
+			return stateClone	
 
 		default:
 			return state
@@ -86,6 +115,25 @@ export function selectKart(kartId) {
 	}
 }
 
+/**
+	@kartId - id of kart to move
+	@distanceToMove - distance to move towards finish line
+*/
+export function moveKart(kartId, distanceToMove) {
+	return { 
+		type: MOVE_KART,
+		kartId,
+		distanceToMove
+	}
+}
+
+/**
+
+*/
+export function moveKartsToStart() {
+	return { type: MOVE_KARTS_TO_START }
+}
+
 // OTHER
 // ----------------------------------------------------------------
 
@@ -94,15 +142,15 @@ export function selectKart(kartId) {
 
 	Note: this function is exported as it is used by the unit test script also.
 */
-export function createInitialKarts(numberOfKarts) {
+export function createInitialState(numberOfKarts) {
 
-	let initialKarts = {}
+	let initialState = {}
 
 	for (let i = 1; i <= numberOfKarts; i = i + 1) {
-		initialKarts[i] = { kartId: i, name: "kart" + i, image: "", wins: 0, losses: 0, selected: false }
+		initialState[i] = { name: "kart" + i, image: "", wins: 0, losses: 0, distance: 0, selected: false }
 	}
 
-	return initialKarts
+	return initialState
 }
 
 /**

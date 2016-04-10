@@ -1,15 +1,15 @@
 "use strict"
 
-import reducer,
-	{
-		winsIncrement,
-		lossesIncrement,
-		balanceAdd,
-		balanceSubtract,
-		racesIncrement
-	}
-	from "../../src/ducks/user"
 import { expect } from "chai"
+
+import reducer,	{
+	winsIncrement,
+	lossesIncrement,
+	balanceAdd,
+	balanceSubtract,
+	racesIncrement
+}
+from "../../src/ducks/user"
 
 
 const initialState = {

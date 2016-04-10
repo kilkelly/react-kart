@@ -9,10 +9,9 @@ import { NUMBER_OF_KARTS } from "../core/constants"
 
 // CONSTANTS
 // ----------------------------------------------------------------
-const START_RACE = "react-kart/karts/START_RACE"
-const END_RACE = "react-kart/karts/END_RACE"
-const MOVE_KART = "react-kart/karts/MOVE_KART"
-const RESET_RACE = "react-kart/karts/RESET_RACE"
+const START_RACE = "react-kart/currentRace/START_RACE"
+const END_RACE = "react-kart/currentRace/END_RACE"
+const RESET_RACE = "react-kart/currentRace/RESET_RACE"
 
 // REDUCER
 // ----------------------------------------------------------------
@@ -32,7 +31,7 @@ export default function reducer(state = resetCurrentRace(NUMBER_OF_KARTS), actio
 		case START_RACE:
 
 			return Object.assign({}, state, { 
-				currentRaceId: action.currentRaceId
+				currentRaceId: action.raceId,
 				inProgress: true,
 				betAmount: action.betAmount
 			})
@@ -40,24 +39,15 @@ export default function reducer(state = resetCurrentRace(NUMBER_OF_KARTS), actio
 		// -----------------------------------------------------
 		case END_RACE:
 
-			return Object.assign({}, state, { inProgress: false })		
-
-		// -----------------------------------------------------
-		case MOVE_KART:
-
-			stateClone = clone(state) // clone state to avoid mutation
-
-			objectToChange = stateClone.kartDistances[action.kartId]
-			objectToChange.distance = objectToChange.distance + action.distanceToMove
-
-			return stateClone
-
+			return Object.assign({}, state, { 
+				inProgress: false,
+				winnerId: action.winnerId
 			})		
 
 		// -----------------------------------------------------
 		case RESET_RACE:
 
-			return resetCurrentRace(NUMBER_OF_KARTS, action.currentRaceId)
+			return resetCurrentRace(NUMBER_OF_KARTS)		
 
 		default:
 			return state
@@ -68,32 +58,24 @@ export default function reducer(state = resetCurrentRace(NUMBER_OF_KARTS), actio
 // ----------------------------------------------------------------
 
 /**
+	@raceId - id of the race being run
 	@betAmount - amount that user has bet on this race
 */
-export function startRace(currentRaceId, betAmount) {
+export function startRace(raceId, betAmount) {
 	return { 
 		type: START_RACE,
-		currentRaceId
+		raceId,
 		betAmount
 	}
 }
 
 /**
-	
+	@winnerId - id of winning kart
 */
-export function endRace() {
-	return { type: END_RACE	}
-}
-
-/**
-	@kartId - id of kart to move
-	@distanceToMove - distance to move towards finish line
-*/
-export function moveKart(kartId, distanceToMove) {
+export function endRace(winnerId) {
 	return { 
-		type: MOVE_KART,
-		kartId
-		distanceToMove
+		type: END_RACE,
+		winnerId
 	}
 }
 
@@ -108,24 +90,17 @@ export function resetRace() {
 // ----------------------------------------------------------------
 
 /**
-	@numberOfKarts - number of karts to account for in state
+	@numberOfKarts - number of karts to create in state
 
 	Note: this function is exported as it is used by the unit test script also.
 */
 export function resetCurrentRace(numberOfKarts) {
 
-	let kartDistances = {}
-
-	for (let i = 1; i <= numberOfKarts; i = i + 1) {
-		kartDistances[i] = { kartId: i, distance: 0 }
-	}
-
 	const currentRace = {
-		currentRaceId: null
-		kartDistances,
+		currentRaceId: null,
 		inProgress: false,
 		betAmount: 0,
-		winner: null		
+		winnerId: null		
 	}
 
 	return currentRace
