@@ -12,6 +12,7 @@ import { NUMBER_OF_KARTS } from "../core/constants"
 const START_RACE = "react-kart/currentRace/START_RACE"
 const END_RACE = "react-kart/currentRace/END_RACE"
 const RESET_RACE = "react-kart/currentRace/RESET_RACE"
+const UPDATE_RANKINGS = "react-kart/currentRace/UPDATE_RANKINGS"
 
 // REDUCER
 // ----------------------------------------------------------------
@@ -48,6 +49,46 @@ export default function reducer(state = resetCurrentRace(NUMBER_OF_KARTS), actio
 		case RESET_RACE:
 
 			return resetCurrentRace(NUMBER_OF_KARTS)		
+
+		// -----------------------------------------------------
+		case UPDATE_RANKINGS:
+
+			//** create a helper array to sort karts by distance traveled (in descending order)
+			// array format (unsorted)
+			//	[
+			//		{ kartId: 1, distance: 500 },
+			//		{ kartId: 2, distance: 650 },
+			//		{ kartId: 3, distance: 400 },
+			// 		etc...
+			//	]
+			let rankingsCalc = []
+			for (let i = 1; i <= NUMBER_OF_KARTS; i = i + 1) {
+				rankingsCalc.push({
+					kartId: i,
+					distance: action.karts[i].distance
+				})
+			}	
+			//*		
+
+			// array format (sorted)
+			//	[
+			//		{ kartId: 2, distance: 650 },
+			//		{ kartId: 1, distance: 500 },
+			//		{ kartId: 3, distance: 400 },
+			// 		etc...
+			//	]
+			rankingsCalc.sort((a, b) => {
+				return a.distance < b.distance
+			})
+
+			//** use the helper array to update rankings for current race
+			let rankings = {}
+			rankingsCalc.forEach((ranking, i) => {
+				rankings[i + 1] = { kartId: ranking.kartId }
+			})
+			//*
+
+			return Object.assign({}, state, { rankings })
 
 		default:
 			return state
@@ -86,6 +127,16 @@ export function resetRace() {
 	return { type: RESET_RACE }
 }
 
+/**
+	@karts - all karts in this race
+*/
+export function updateRankings(karts) {
+	return { 
+		type: UPDATE_RANKINGS,
+		karts
+	}
+}
+
 // OTHER
 // ----------------------------------------------------------------
 
@@ -96,10 +147,18 @@ export function resetRace() {
 */
 export function resetCurrentRace(numberOfKarts) {
 
+	//** provide blank rankings
+	let rankings = {}
+	for (let i = 1; i <= NUMBER_OF_KARTS; i = i + 1) {
+		rankings[i] = { kartId: null }
+	}
+	//*
+
 	const currentRace = {
 		currentRaceId: null,
 		inProgress: false,
-		betAmount: 0,
+		rankings,
+		betAmount: 0,		
 		winnerId: null		
 	}
 

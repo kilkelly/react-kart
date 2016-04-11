@@ -9,8 +9,11 @@ import reducer,	{
 	startRace,
 	endRace,		
 	resetRace,
-	resetCurrentRace,		// used for testing purposes
+	updateRankings,
+	resetCurrentRace		// used for testing purposes
 } from "../../src/ducks/currentRace"
+
+import { createKarts } from "../../src/ducks/karts"
 
 
 const initialState = resetCurrentRace(NUMBER_OF_KARTS)
@@ -57,5 +60,38 @@ describe('"currentRace" reducer', () => {
 			expect(nextState.winnerId).to.equal(null)
 		})								
 	})		
+
+	describe("rankings", () => {
+		it("updated successfully", () => {
+
+			//** create karts and set their distances to test rankings
+			// format
+			//	{
+			//		{ name: "kart1" . . . distance: 10 . . . }	
+			//		{ name: "kart2" . . . distance: 20 . . . }	
+			//		{ name: "kart3" . . . distance: 30 . . . }	
+			//	}
+			
+			let karts = createKarts(NUMBER_OF_KARTS)
+			for (let i = 1; i <= NUMBER_OF_KARTS; i = i + 1 ) {
+				karts[i].distance = i * 10
+			}
+			//*
+			
+			const nextState = reducer(initialState, updateRankings(karts))
+
+			//**
+			//	rankings should be as follows
+			//	#1 = kartid 3 = distance 30 
+			//	#2 = kartid 2 = distance 20 
+			//	#3 = kartid 1 = distance 10 
+
+			for (let i = 1; i <= NUMBER_OF_KARTS; i = i + 1) {
+				expect(nextState.rankings[i].kartId).to.equal((NUMBER_OF_KARTS + 1) - i)
+			}			
+
+		})
+	})	
+				
 
 })

@@ -12,13 +12,16 @@ const LOG_RACE = "react-kart/karts/LOG_RACE"
 // ----------------------------------------------------------------
 
 /**
-	@raceLog - races logged so far
+	@state - races logged so far
 	@action - actions to be performed on race log
 */
-export default function reducer(raceLog = {}, action) {	
+export default function reducer(state = {}, action) {	
 
 	switch (action.type) {
 		case LOG_RACE:
+
+			// return a new array with the logged race added on to the front
+			return state.slice(0).shift(action.race)
 
 		default:
 			return raceLog
@@ -31,7 +34,7 @@ export default function reducer(raceLog = {}, action) {
 /**
 	@race - race object to log
 */
-export function log(race) {
+export function logRace(race) {
 	return { 
 		type: LOG_RACE,
 		race
@@ -41,4 +44,3 @@ export function log(race) {
 
 // OTHER
 // ----------------------------------------------------------------
-

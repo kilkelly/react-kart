@@ -26,7 +26,7 @@ const MOVE_KARTS_TO_START = "react-kart/karts/MOVE_KARTS_TO_START"
 	@state - state of karts
 	@action - action to be peformed on karts
 */
-export default function reducer(state = createInitialState(NUMBER_OF_KARTS), action) {	
+export default function reducer(state = createKarts(NUMBER_OF_KARTS), action) {	
 
 	let stateClone // some actions will need this variable to clone existing state into
 	let objectToChange // some actions will need this variable to change a state object's value/s
@@ -142,7 +142,7 @@ export function moveKartsToStart() {
 
 	Note: this function is exported as it is used by the unit test script also.
 */
-export function createInitialState(numberOfKarts) {
+export function createKarts(numberOfKarts) {
 
 	let initialState = {}
 

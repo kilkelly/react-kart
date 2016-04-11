@@ -13,12 +13,12 @@ import reducer,	{
 	selectKart,
 	moveKart,
 	moveKartsToStart,		
-	createInitialState,		// used for testing purposes
+	createKarts,		// used for testing purposes
 	selectKartWithinKarts		// used for testing purposes
 }
 from "../../src/ducks/karts"
 
-const initialState = createInitialState(NUMBER_OF_KARTS)		
+const initialState = createKarts(NUMBER_OF_KARTS)		
 const kartId = 1 // kart to test with
 
 //--------------------------------------------------------------------------------
