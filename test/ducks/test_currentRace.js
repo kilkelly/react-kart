@@ -17,9 +17,9 @@ import { createKarts } from "../../src/ducks/karts"
 
 
 const initialState = resetCurrentRace(NUMBER_OF_KARTS)
-const kartId = 1 // arbirary number, just for testing purposes
-const raceId = 15 // arbirary number, just for testing purposes
-const betAmount = 80 // arbirary number, just for testing purposes
+const kartId = 1 		// arbirary number, just for testing purposes
+const raceId = 15 		// arbirary number, just for testing purposes
+const betAmount = 80 		// arbirary number, just for testing purposes
 
 describe('"currentRace" reducer', () => {
 

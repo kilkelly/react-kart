@@ -173,3 +173,19 @@ export function selectKartWithinKarts(prevKarts, kartId) {
 	return nextKarts
 }
 
+/**
+	@karts - all karts that can be selected
+*/
+export function getSelectedKart(karts) {
+
+	for (let i = 1; i <= NUMBER_OF_KARTS; i = i + 1) {
+		if (karts[i].selected === true) {
+			return i
+		}
+	}
+
+	// 
+	throw "Error: No kart selected by user"
+}
+
+
