@@ -6,9 +6,7 @@ var assetsPath = path.join(process.cwd(), "public", "assets")
 
 module.exports = {
 
-	devtool: "eval",
-
-	name: "development",
+	name: "production",
 
 	// The base directory (absolute path!) for resolving the entry option.
 	context: process.cwd(),
@@ -16,8 +14,7 @@ module.exports = {
 	entry: {
 		app: [	
 			"./src/index.js",
-			"./src/images/index.js",			
-			"webpack-hot-middleware/client?path=/__webpack_hmr&timeout=20000&reload=true"
+			"./src/images/index.js"
 		]
 	},
 
@@ -32,10 +29,7 @@ module.exports = {
 			{
 				test: /\.jsx?/,
 				loader: "babel",								
-				exclude: /node_modules/,
-		        query: {
-		          presets: ['react-hmre']
-		        }						
+				exclude: /node_modules/,					
 			},
 	        {
 	        	test: /\.png$/,
@@ -69,12 +63,10 @@ module.exports = {
 			title: "ReactKart",
 			template: "template.html"
 		}),
-		new webpack.HotModuleReplacementPlugin(),
-		new webpack.NoErrorsPlugin(),
 		new ExtractTextPlugin('dev.css', { allChunks: true }),
 		new webpack.DefinePlugin({
 			'process.env': { 
-				NODE_ENV: JSON.stringify(process.env.NODE_ENV || 'development') 
+				NODE_ENV: JSON.stringify(process.env.NODE_ENV || 'production') 
 			}			
 		})
 	]

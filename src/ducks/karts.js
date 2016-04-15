@@ -147,7 +147,7 @@ export function createKarts(numberOfKarts) {
 	let initialState = {}
 
 	for (let i = 1; i <= numberOfKarts; i = i + 1) {
-		initialState[i] = { name: "kart" + i, image: "", wins: 0, losses: 0, distance: 0, selected: false }
+		initialState[i] = { name: "kart" + i, image: "kart" + i + ".gif", wins: 0, losses: 0, distance: 0, selected: false }
 	}
 
 	return initialState

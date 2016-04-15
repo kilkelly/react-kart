@@ -1,0 +1,9 @@
+.kart {
+	width: 100%;
+	max-width: 7rem;	
+	max-height: 7rem;
+}
+
+.selected {
+	border: 3px solid #000;
+}
