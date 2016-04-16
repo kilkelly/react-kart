@@ -2,38 +2,28 @@
 
 import React from "react"
 import classname from "classnames"
-import style from "./style.css"
-
-// store images as base64 inline or by file location depending on the size of the image
-// (webpack handles this storage choice)
-let kartImages = []
-kartImages[1] = require("../../images/kart1.png")
-kartImages[2] = require("../../images/kart2.png")
-kartImages[3] = require("../../images/kart3.png")
-kartImages[4] = require("../../images/kart4.png")
-kartImages[5] = require("../../images/kart5.png")
-kartImages[6] = require("../../images/kart6.png")
-kartImages[7] = require("../../images/kart7.png")
-kartImages[8] = require("../../images/kart8.png")
-
+import styles from "./style.css"
 
 // -------------------------------------------------------------------------------
 const Kart = React.createClass({
 
 	render: function() {
 
-		let kartClass = style.kart
+		//** determine styles for this kart		
+		let kartClass = styles.kart
 		if (this.props.selected) {
-			kartClass += " " + style.selected
+			kartClass += " " + styles.selected
 		}
-		console.log(kartClass)
+		//*
 
-		return (			
-			<img 
-				className={kartClass}
-				src={kartImages[this.props.kartId]}
-				title={this.props.kartId}
-				onClick={this.props.selectKart} />			
+		return (
+			<div className={styles.kartCell}>			
+				<img 
+					className={kartClass}
+					src={this.props.image}
+					title={this.props.name}
+					onClick={this.props.selectKart} />			
+			</div>		
 		)	
 	}
 

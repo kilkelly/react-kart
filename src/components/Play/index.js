@@ -7,7 +7,13 @@ const Play = React.createClass({
 
 	render: function() {
 		return (
-			<KartSelectAreaContainer />
+			<div>
+				{
+					!this.props.currentRace.inProgress
+					? <KartSelectAreaContainer />
+					: ""
+				}
+			</div>
 		)
 	}
 

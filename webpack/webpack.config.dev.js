@@ -15,8 +15,7 @@ module.exports = {
 
 	entry: {
 		app: [	
-			"./src/index.js",
-			"./src/images/index.js",			
+			"./src/index.js",			
 			"webpack-hot-middleware/client?path=/__webpack_hmr&timeout=20000&reload=true"
 		]
 	},
@@ -71,7 +70,7 @@ module.exports = {
 		}),
 		new webpack.HotModuleReplacementPlugin(),
 		new webpack.NoErrorsPlugin(),
-		new ExtractTextPlugin('dev.css', { allChunks: true }),
+		new ExtractTextPlugin('[contenthash].css', { allChunks: true }),
 		new webpack.DefinePlugin({
 			'process.env': { 
 				NODE_ENV: JSON.stringify(process.env.NODE_ENV || 'development') 

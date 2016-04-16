@@ -13,8 +13,7 @@ module.exports = {
 
 	entry: {
 		app: [	
-			"./src/index.js",
-			"./src/images/index.js"
+			"./src/index.js"
 		]
 	},
 
@@ -63,7 +62,7 @@ module.exports = {
 			title: "ReactKart",
 			template: "template.html"
 		}),
-		new ExtractTextPlugin('dev.css', { allChunks: true }),
+		new ExtractTextPlugin('[contenthash].css', { allChunks: true }),
 		new webpack.DefinePlugin({
 			'process.env': { 
 				NODE_ENV: JSON.stringify(process.env.NODE_ENV || 'production') 

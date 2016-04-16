@@ -1,9 +1,27 @@
+.kart, .selected {
+	cursor: pointer;
+}
+
 .kart {
-	width: 100%;
+	border: 3px solid #EEE;	
 	max-width: 7rem;	
 	max-height: 7rem;
+	width: 100%;
 }
 
 .selected {
-	border: 3px solid #000;
+	border: 3px dashed #F6F;
+}
+
+.kartCell {
+	display: table-cell;	
+}
+
+/*Responsive Styles*/
+@media screen and (max-width : 760px){
+ 
+	.selected {
+		border: 3px dashed #FFF;
+	}
+
 }

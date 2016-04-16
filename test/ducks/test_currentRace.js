@@ -72,7 +72,7 @@ describe('"currentRace" reducer', () => {
 			//		{ name: "kart3" . . . distance: 30 . . . }	
 			//	}
 			
-			let karts = createKarts(NUMBER_OF_KARTS)
+			let karts = createKarts(NUMBER_OF_KARTS, true)
 			for (let i = 1; i <= NUMBER_OF_KARTS; i = i + 1 ) {
 				karts[i].distance = i * 10
 			}

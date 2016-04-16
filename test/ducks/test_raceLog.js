@@ -28,7 +28,7 @@ describe('"raceLog" reducer', () => {
 
 	//**
 	let karts = {}
-	karts = kartsReducer(createKarts(NUMBER_OF_KARTS), selectKart(kartId))
+	karts = kartsReducer(createKarts(NUMBER_OF_KARTS, true), selectKart(kartId))
 
 	//**
 	let currentRace = {}

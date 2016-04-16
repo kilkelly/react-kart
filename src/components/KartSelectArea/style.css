@@ -1,0 +1,22 @@
+.kartTable {
+	display: table;	
+	border-spacing: 0.5rem;
+}
+
+.kartRow {
+	display: table-row;		
+}
+
+.selectedMessage {
+	background-color: #9FC;
+	border-radius: 5px;
+	color: #000;
+	margin: 10px 0px 0px 10px;
+	padding: 3px;
+	text-align:center;
+}
+
+.selectedKartName {
+	font-size: 2rem;	
+	font-weight: bold;
+}

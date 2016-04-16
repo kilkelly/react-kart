@@ -139,15 +139,18 @@ export function moveKartsToStart() {
 
 /**
 	@numberOfKarts - number of karts to account for in state
+	@testMode = set this flag during unit tests due
 
 	Note: this function is exported as it is used by the unit test script also.
 */
-export function createKarts(numberOfKarts) {
+export function createKarts(numberOfKarts, testMode = false) {
+
+	const karts = require("../config/karts")(testMode)	
 
 	let initialState = {}
 
 	for (let i = 1; i <= numberOfKarts; i = i + 1) {
-		initialState[i] = { name: "kart" + i, image: "kart" + i + ".gif", wins: 0, losses: 0, distance: 0, selected: false }
+		initialState[i] = { name: karts[i].name, image: karts[i].image, wins: 0, losses: 0, distance: 0, selected: false }
 	}
 
 	return initialState

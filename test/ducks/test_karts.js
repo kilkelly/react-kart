@@ -18,7 +18,7 @@ import reducer,	{
 }
 from "../../src/ducks/karts"
 
-const initialState = createKarts(NUMBER_OF_KARTS)		
+const initialState = createKarts(NUMBER_OF_KARTS, true)
 const kartId = 1 // kart to test with
 
 //--------------------------------------------------------------------------------
