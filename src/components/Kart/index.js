@@ -2,7 +2,7 @@
 
 import React from "react"
 import classname from "classnames"
-import styles from "./style.css"
+import styles from "./style.scss"
 
 // -------------------------------------------------------------------------------
 const Kart = React.createClass({

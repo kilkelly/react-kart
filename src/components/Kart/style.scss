@@ -1,5 +1,7 @@
+@import "../../core/constants";
+
 .kart, .selected {
-	cursor: pointer;
+	cursor: $default-cursor;
 }
 
 .kart {
@@ -18,7 +20,7 @@
 }
 
 /*Responsive Styles*/
-@media screen and (max-width : 760px){
+@media screen and (max-width : $responsive-breakpoint){
  
 	.selected {
 		border: 3px dashed #FFF;

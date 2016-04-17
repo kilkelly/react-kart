@@ -3,7 +3,7 @@
 import React from "react"
 import { NUMBER_OF_KARTS } from "../../core/constants"
 import Kart from "../Kart"
-import styles from "./style.css"
+import styles from "./style.scss"
 
 // -------------------------------------------------------------------------------
 const KartSelectArea = React.createClass({

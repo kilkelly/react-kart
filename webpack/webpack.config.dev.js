@@ -41,12 +41,10 @@ module.exports = {
 	        	loader: "url-loader?limit=8192"
 	        },			
 			{
-				test: /\.css$/,
-				loader: ExtractTextPlugin.extract(
-							'style-loader',
-							'css-loader?module&localIdentName=[local]__[hash:base64:5]',
-							'postcss-loader'
-						),
+				test: /\.scss$/,
+				loader: ExtractTextPlugin.extract(														
+							"css?modules&localIdentName=[local]__[hash:base64:5]!postcss!sass"
+						),				
 		    	exclude: /node_modules/
 			}
 		]
