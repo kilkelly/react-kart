@@ -1,7 +1,7 @@
 "use strict"
 
 import React from "react"
-import KartSelectAreaContainer from "../../containers/KartSelectAreaContainer"
+import RaceSetup from "../RaceSetup"
 
 const Play = React.createClass({
 
@@ -10,7 +10,7 @@ const Play = React.createClass({
 			<div>
 				{
 					!this.props.currentRace.inProgress
-					? <KartSelectAreaContainer />
+					? <RaceSetup />
 					: ""
 				}
 			</div>

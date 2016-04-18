@@ -1,0 +1,48 @@
+
+@import "./constants";
+
+/* Global styles, including mobile-first responsive grid */
+:global(html) { font-size:12px; }
+:global(body) { background-color: #CCC; font-family: 'Slabo 27px', serif; }
+:global(.row), :global(.column) {	box-sizing: border-box; }
+:global(.row::before), :global(.row::after) { content: " ";	display: table;	}
+:global(.row::after) { clear: both; }
+:global(.column) { position: relative; float: left; }
+
+/* Mobile-first */
+:global(.column) + :global(.column) { margin-left: 0; }
+:global(.column-1), 
+:global(.column-2), 
+:global(.column-3), 
+:global(.column-4), 
+:global(.column-5), 
+:global(.column-6), 
+:global(.column-7), 
+:global(.column-8), 
+:global(.column-9), 
+:global(.column-10), 
+:global(.column-11), 
+:global(.column-12) {
+    width: auto;
+    float: none;
+}
+
+/*Responsive Styles*/
+@media screen and (min-width : $responsive-breakpoint) {
+	:global(html) { font-size:16px; }
+}
+
+/*		.column + .column { margin-left: 1.6%; }
+.column-1 { width: 6.86666666667%; }
+.column-2 { width: 15.3333333333%; }
+.column-3 { width: 23.8%; }
+.column-4 { width: 32.2666666667%; }
+.column-5 { width: 40.7333333333%; }
+.column-6 { width: 49.2%; }
+.column-7 { width: 57.6666666667%; }
+.column-8 { width: 66.1333333333%; }
+.column-9 { width: 74.6%; }
+.column-10 { width: 83.0666666667%; }
+.column-11 { width: 91.5333333333%; }
+.column-12 { width: 100%; }	*/
+

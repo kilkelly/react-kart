@@ -2,7 +2,7 @@
 
 import { connect } from "react-redux"
 import { selectKart } from "../ducks/karts"
-import KartSelectArea from "../components/KartSelectArea"
+import KartSelect from "../components/KartSelect"
 
 function mapStateToProps(state, ownProps) {
 	return {
@@ -21,4 +21,4 @@ function mapDispatchToProps(dispatch, ownProps) {
 export default connect(	
 	mapStateToProps,
 	mapDispatchToProps
-)(KartSelectArea)
+)(KartSelect)

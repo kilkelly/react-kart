@@ -13,7 +13,8 @@ module.exports = {
 
 	entry: {
 		app: [	
-			"./src/index.js"
+			"./src/index.js",
+			"./src/core/global.scss",	// includes responsive grid
 		]
 	},
 

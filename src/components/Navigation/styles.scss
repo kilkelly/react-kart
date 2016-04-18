@@ -1,0 +1,41 @@
+
+@import "../../core/constants";
+
+.logo, .menu, .balance {
+	display: table-cell;
+}
+
+.logo {
+	font-size: 2rem;
+}
+
+.menu {
+	display: none;
+}
+
+.nav {
+	background-color: #BBB;
+	display: table;	
+	width: 100%;
+}
+
+.menu > ul {
+	list-style-type: none;
+}
+
+.menu li {
+	display: inline;
+	font-size: 0.8rem;
+	padding: 0.5rem;
+}
+
+.balance {
+	text-align:right;
+}
+
+/*Responsive Styles*/
+@media screen and (min-width : $responsive-breakpoint) {
+	.menu {
+		display: table-cell;
+	}
+}

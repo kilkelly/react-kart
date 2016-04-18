@@ -1,3 +1,4 @@
+
 @import "../../core/constants";
 
 .kart, .selected {
@@ -17,13 +18,4 @@
 
 .kartCell {
 	display: table-cell;	
-}
-
-/*Responsive Styles*/
-@media screen and (max-width : $responsive-breakpoint){
- 
-	.selected {
-		border: 3px dashed #FFF;
-	}
-
 }

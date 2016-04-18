@@ -1,7 +1,6 @@
 "use strict"
 
 import React from "react"
-import classname from "classnames"
 import styles from "./style.scss"
 
 // -------------------------------------------------------------------------------

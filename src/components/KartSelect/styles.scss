@@ -1,0 +1,15 @@
+
+@import "../../core/constants";
+
+.table {
+	display: table;	
+	border-spacing: 0.5rem;
+}
+
+.row {
+	display: table-row;	
+}
+
+.cell {
+	display: table-cell;	
+}
