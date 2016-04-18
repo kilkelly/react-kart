@@ -10,6 +10,9 @@ const Navigation = React.createClass({
 	render: function() {
 		return (
 			<div className={styles.nav}>
+				<div className={styles.responsiveMenu}>
+					menu
+				</div>			
 				<div className={styles.logo}>
 					ReactKart
 				</div>

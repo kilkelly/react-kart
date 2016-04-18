@@ -16,7 +16,7 @@ const Kart = React.createClass({
 		//*
 
 		return (
-			<div className={styles.kartCell}>			
+			<div className={styles.cell}>			
 				<img 
 					className={kartClass}
 					src={this.props.image}

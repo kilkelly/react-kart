@@ -1,7 +1,7 @@
 
 @import "../../core/constants";
 
-.logo, .menu, .balance {
+.logo, .menu, .balance, responsiveMenu {
 	display: table-cell;
 }
 
@@ -15,6 +15,7 @@
 
 .nav {
 	background-color: #BBB;
+	border-spacing: 0.5rem;
 	display: table;	
 	width: 100%;
 }
@@ -38,4 +39,8 @@
 	.menu {
 		display: table-cell;
 	}
+
+	.responsiveMenu {
+		display: none;
+	}	
 }

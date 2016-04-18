@@ -9,19 +9,25 @@ const KartSelectedStats = React.createClass({
 	
 	render: function() {
 
-		let selectedKartName = ""		
+		let selectedKart		
 
 		for (let i = 1; i <= NUMBER_OF_KARTS; i = i + 1) {
 			if (this.props.karts[i].selected) {
-				selectedKartName = this.props.karts[i].name	
+				selectedKart = this.props.karts[i]
 			}
 		}
 
 		return (
 			<div>
 				{
-					selectedKartName 
-					? <div className={styles.message}>You have selected <span className={styles.selected}>{selectedKartName}</span></div>
+					selectedKart 
+					? <div className={styles.message}>
+						<div>
+							<span className={styles.selected}>{selectedKart.name}</span>
+						</div>
+						<div>Wins: {selectedKart.wins}</div>	
+						<div>Losses: {selectedKart.losses}</div>													
+					</div>
 					: ""
 				}
 			</div>
