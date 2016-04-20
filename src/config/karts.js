@@ -12,31 +12,31 @@ function getKarts(testMode = false) {
 	const karts = {
 		1: {
 			name: "kart1",
-			image: testMode ? "" : require("../images/kart8.png")
+			image: testMode ? "" : require("../images/kart1.png")
 		},
 		2: {
 			name: "kart2",
-			image: testMode ? "" : require("../images/kart8.png")
+			image: testMode ? "" : require("../images/kart2.png")
 		},
 		3: {
 			name: "kart3",
-			image: testMode ? "" : require("../images/kart8.png")
+			image: testMode ? "" : require("../images/kart3.png")
 		},
 		4: {
 			name: "kart4",
-			image: testMode ? "" : require("../images/kart8.png")
+			image: testMode ? "" : require("../images/kart4.png")
 		},
 		5: {
 			name: "kart5",
-			image: testMode ? "" : require("../images/kart8.png")
+			image: testMode ? "" : require("../images/kart5.png")
 		},
 		6: {
 			name: "kart6",
-			image: testMode ? "" : require("../images/kart8.png")
+			image: testMode ? "" : require("../images/kart6.png")
 		},
 		7: {
 			name: "kart7",
-			image: testMode ? "" : require("../images/kart8.png")
+			image: testMode ? "" : require("../images/kart7.png")
 		},
 		8: {
 			name: "kart8",

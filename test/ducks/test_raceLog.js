@@ -15,7 +15,8 @@ import currentRaceReducer, {
 	resetCurrentRace		// used for testing purposes
 } from "../../src/ducks/currentRace"
 
-import kartsReducer, { selectKart, createKarts, getSelectedKart } from "../../src/ducks/karts"
+import kartsReducer, { createKarts } from "../../src/ducks/karts"
+import userReducer, { createUser, setSelectedKart } from "../../src/ducks/user"
 
 const kartId = 1 // arbirary number, just for testing purposes
 const raceId = 15 // arbirary number, just for testing purposes
@@ -27,8 +28,11 @@ const odds = "8/3" // arbirary number, just for testing purposes
 describe('"raceLog" reducer', () => {
 
 	//**
-	let karts = {}
-	karts = kartsReducer(createKarts(NUMBER_OF_KARTS, true), selectKart(kartId))
+	let user = createUser()
+	user = userReducer(user, setSelectedKart(kartId))
+
+	//**
+	let karts = createKarts(NUMBER_OF_KARTS, true)
 
 	//**
 	let currentRace = {}
@@ -41,10 +45,12 @@ describe('"raceLog" reducer', () => {
 	const race = {
 		raceId: completedRace.currentRaceId,
 		results: completedRace.rankings,
-		selectedKart: getSelectedKart(karts),
+		selectedKart: user.selectedKart,
 		betResult,
 		odds
-	}			
+	}		
+
+	console.log(race)	
 
 	describe("one race", () => {
 		it("logged successfully", () => {

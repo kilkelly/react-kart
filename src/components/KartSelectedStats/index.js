@@ -9,11 +9,16 @@ const KartSelectedStats = React.createClass({
 	
 	render: function() {
 
-		let selectedKart		
+		let selectedKart
+		let luckyIndex = 0		// shows how lucky this kart is in percentage terms
 
 		for (let i = 1; i <= NUMBER_OF_KARTS; i = i + 1) {
-			if (this.props.karts[i].selected) {
+
+			if (this.props.karts[i].id === this.props.user.selectedKart) {				
 				selectedKart = this.props.karts[i]
+				if (selectedKart.wins + selectedKart.losses > 0) {
+					luckyIndex = parseFloat(selectedKart.wins * 100 / selectedKart.losses).toFixed(2)
+				}				
 			}
 		}
 
@@ -21,14 +26,17 @@ const KartSelectedStats = React.createClass({
 			<div>
 				{
 					selectedKart 
-					? <div className={styles.message}>
-						<div>
-							<span className={styles.selected}>{selectedKart.name}</span>
+	
+						? <div className={styles.message}>
+							<div>
+								<span className={styles.selected}>{selectedKart.name}</span>
+							</div>
+							<div>Wins: {selectedKart.wins}</div>	
+							<div>Losses: {selectedKart.losses}</div>													
+							<div>Lucky Index: {luckyIndex}%</div>													
 						</div>
-						<div>Wins: {selectedKart.wins}</div>	
-						<div>Losses: {selectedKart.losses}</div>													
-					</div>
-					: ""
+	
+						: ""
 				}
 			</div>
 		)

@@ -1,23 +1,19 @@
 "use strict"
 
 import React from "react"
-import ___Navigation from "../../containers/___Navigation"
 
 // -------------------------------------------------------------------------------
 
-const App = React.createClass({
+const About = React.createClass({
 
 	render: function() {
 		return (
 			<div>
-				<___Navigation />
-				{this.props.children}
-			</div>
-		)		
+				* Beautiful About page *
+			</div>	
+		)
 	}
 
 })
 
-export default App
-
-
+export default About

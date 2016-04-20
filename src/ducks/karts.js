@@ -15,7 +15,6 @@ import {
 // ----------------------------------------------------------------
 const WINS_INCREMENT = "react-kart/karts/WINS_INCREMENT"
 const LOSSES_INCREMENT = "react-kart/karts/LOSSES_INCREMENT"
-const SELECT_KART = "react-kart/karts/SELECT_KART"
 const MOVE_KART = "react-kart/karts/MOVE_KART"
 const MOVE_KARTS_TO_START = "react-kart/karts/MOVE_KARTS_TO_START"
 
@@ -50,11 +49,6 @@ export default function reducer(state = createKarts(NUMBER_OF_KARTS), action) {
 			objectToChange.losses = objectToChange.losses + 1
 
 			return stateClone
-
-		// -----------------------------------------------------
-		case SELECT_KART:
-
-			return selectKartWithinKarts(state, action.kartId)
 
 		// -----------------------------------------------------
 		case MOVE_KART:
@@ -106,16 +100,6 @@ export function lossesIncrement(kartId) {
 }
 
 /**
-	@kartId - kart to select
-*/
-export function selectKart(kartId) {
-	return { 
-		type: SELECT_KART,
-		kartId
-	}
-}
-
-/**
 	@kartId - id of kart to move
 	@distanceToMove - distance to move towards finish line
 */
@@ -150,45 +134,17 @@ export function createKarts(numberOfKarts, testMode = false) {
 	let initialState = {}
 
 	for (let i = 1; i <= numberOfKarts; i = i + 1) {
-		initialState[i] = { name: karts[i].name, image: karts[i].image, wins: 0, losses: 0, distance: 0, selected: false }
-	}
-
-	return initialState
-}
-
-/**
-	@prevKarts - current karts state passed so that we don't need to reference an outside variable
-	@kartId - id of kart we would like to select
-
-	Note: this function is exported as it is used by the unit test script also.
-*/
-export function selectKartWithinKarts(prevKarts, kartId) {
-
-	let nextKarts = clone(prevKarts) // make copy of karts to keep function pure
-
-	// cancel previous kart selection
-	Object.keys(nextKarts).map(
-		kart => nextKarts[kart].selected = false
-	)
-
-	// select kart
-	nextKarts[kartId].selected = true
-	return nextKarts
-}
-
-/**
-	@karts - all karts that can be selected
-*/
-export function getSelectedKart(karts) {
-
-	for (let i = 1; i <= NUMBER_OF_KARTS; i = i + 1) {
-		if (karts[i].selected === true) {
-			return i
+		initialState[i] = { 
+			id: i,
+			name: karts[i].name,
+		 	image: karts[i].image,
+		 	wins: 2,
+		 	losses: 77,
+		 	distance: 0
 		}
 	}
 
-	// 
-	throw "Error: No kart selected by user"
+	return initialState
 }
 
 

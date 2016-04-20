@@ -7,7 +7,8 @@ import reducer,	{
 	lossesIncrement,
 	balanceAdd,
 	balanceSubtract,
-	racesIncrement
+	racesIncrement,
+	setSelectedKart
 }
 from "../../src/ducks/user"
 
@@ -18,6 +19,7 @@ const initialState = {
 	balance: 10,
 	races: 0
 }
+const kartId = 6 // kart to test with
 
 
 describe('"user" reducer', () => {
@@ -78,6 +80,18 @@ describe('"user" reducer', () => {
 
 			expect(nextState).to.deep.equal(expectedState)
 		})				
+	})	
+
+	//--------------------------------------------------------
+
+	describe("kart selection", () => {
+		it("kart selection set correctly", () => {		
+			
+			const nextState = reducer(initialState, setSelectedKart(kartId)) // select kart which has the supplied Id
+			
+			expect(nextState.selectedKart).to.equal(kartId)
+		})
+
 	})	
 
 })

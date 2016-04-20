@@ -6,6 +6,7 @@ import KartSelectedStats from "../components/KartSelectedStats"
 
 function mapStateToProps(state, ownProps) {
 	return {
+		user: state.user,
 		karts: state.karts
 	}
 }

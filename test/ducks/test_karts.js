@@ -10,11 +10,9 @@ import {
 import reducer,	{
 	winsIncrement,
 	lossesIncrement,
-	selectKart,
 	moveKart,
 	moveKartsToStart,		
 	createKarts,		// used for testing purposes
-	selectKartWithinKarts		// used for testing purposes
 }
 from "../../src/ducks/karts"
 
@@ -58,38 +56,6 @@ describe('"karts" reducer', () => {
 			expect(nextState).to.deep.equal(expectedState)
 		})				
 	})	
-
-	//--------------------------------------------------------
-
-	describe("selection", () => {
-		it("correct kart selected", () => {		
-			
-			const prevState = clone(initialState)
-			const nextState = reducer(prevState, selectKart(kartId)) // select kart which has the supplied Id
-			
-			expect(nextState[kartId].selected).to.equal(true)
-		})
-
-		//--------------------------------------------------------
-
-		it("only one kart can be selected at a time", () => {		
-			
-			const prevState = clone(initialState)
-			const nextState = reducer(prevState, selectKart(kartId)) // select kart which has the supplied Id
-			
-			const numOfSelectedKarts = Object.keys(nextState).filter(
-				kart => nextState[kart].selected === true
-			).length
-
-			const numOfUnselectedKarts = Object.keys(nextState).filter(
-				kart => nextState[kart].selected === false
-			).length			
-
-			expect(numOfSelectedKarts).to.equal(1)
-			expect(numOfUnselectedKarts).to.equal(NUMBER_OF_KARTS - 1)
-		})		
-
-	})
 
 	//--------------------------------------------------------
 

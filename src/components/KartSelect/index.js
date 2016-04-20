@@ -17,8 +17,8 @@ const KartSelect = React.createClass({
 				kartId={kartId}
 				name={this.props.karts[kartId].name}
 				image={this.props.karts[kartId].image}
-				selected={this.props.karts[kartId].selected}
-				selectKart={this.props.selectKart.bind(null, kartId)} />
+				selected={kartId === this.props.user.selectedKart}
+				selectKart={this.props.setSelectedKart.bind(null, kartId)} />
 		)
 	},
 

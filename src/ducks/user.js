@@ -12,16 +12,12 @@ const LOSSES_INCREMENT = "react-kart/user/LOSSES_INCREMENT"
 const BALANCE_ADD = "react-kart/user/BALANCE_ADD"
 const BALANCE_SUBTRACT = "react-kart/user/BALANCE_SUBTRACT"
 const RACES_INCREMENT = "react-kart/user/RACES_INCREMENT"
+const SET_SELECTED_KART = "react-kart/user/SET_SELECTED_KART"
 
 // REDUCER
 // ----------------------------------------------------------------
 
-export default function reducer(state = {
-	wins: 0,
-	losses: 0,
-	balance: 10,
-	races: 0
-}, action) {
+export default function reducer(state = createUser(), action) {
 
 	switch (action.type) {
 		case WINS_INCREMENT:
@@ -41,6 +37,8 @@ export default function reducer(state = {
 
 		case RACES_INCREMENT:
 			return Object.assign({}, state, { races: state.races + 1 })			
+		case SET_SELECTED_KART:
+			return Object.assign({}, state, { selectedKart: action.kartId })						
 		default:
 			return state
 	}	
@@ -73,4 +71,30 @@ export function balanceSubtract(value) {
 
 export function racesIncrement() {
 	return { type: RACES_INCREMENT }
+}
+
+/**
+	@kartId - kart to select
+*/
+export function setSelectedKart(kartId) {
+	return { 
+		type: SET_SELECTED_KART,
+		kartId
+	}
+}
+
+// OTHER
+// ----------------------------------------------------------------
+
+/**
+	Note: this function is exported as it is used by the unit test script also.
+*/
+export function createUser() {
+	return {
+		wins: 0,
+		losses: 0,
+		balance: 10,
+		races: 0,
+		selectedKart: null
+	}
 }

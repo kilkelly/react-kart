@@ -1,7 +1,8 @@
 import React from "react"
 import { Router, Route, IndexRoute } from "react-router"
-import AppContainer from "./containers/AppContainer"
-import PlayContainer from "./containers/PlayContainer"
+import ___App from "./containers/___App"
+import ___Play from "./containers/___Play"
+import About from "./components/About"
 //import MyStatsContainer from "./containers/MyStatsContainer"
 //import KartStatsContainer from "./containers/KartStatsContainer"
 //import RaceLogContainer from "./containers/RaceLogContainer"
@@ -12,8 +13,9 @@ export default (history) => {
 
 	return(
 		<Router history={history}>
-			<Route path="/" component={AppContainer}>
-				<IndexRoute component={PlayContainer} />
+			<Route path="/" component={___App}>
+				<IndexRoute component={___Play} />
+				<Route path="/about" component={About} />
 			</Route>
 		</Router>
 	)

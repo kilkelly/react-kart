@@ -1,32 +1,36 @@
 "use strict"
 
 import React from "react"
+import { Link, IndexLink } from "react-router"
 import styles from "./styles.scss"
 
 // -------------------------------------------------------------------------------
 
-const Navigation = React.createClass({
+const Navigation = React.createClass({	
 
 	render: function() {
 		return (
-			<div className={styles.nav}>
-				<div className={styles.responsiveMenu}>
-					menu
+			<div id={styles.nav}>					
+
+				<input type="checkbox" id={styles.menuCheckbox} />
+				<label htmlFor={styles.menuCheckbox} id={styles.labelMenu}>Menu</label>				
+				<div id={styles.responsiveMenu}>
+
 				</div>			
-				<div className={styles.logo}>
-					ReactKart
-				</div>
-				<nav className={styles.menu}>
+				<div id={styles.logoContainer}>
+					ReactKart										
+				</div>												
+				<nav id={styles.menuContainer}>
 					<ul>
-						<li>Play</li>
-						<li>My Stats</li>
-						<li>Racer Stats</li>
-						<li>Race Log</li>
-						<li>About</li>
+						<li class={styles.menuItem}><IndexLink to="/" activeClassName={styles.menuItemActive}>Play</IndexLink></li>
+						<li class={styles.menuItem}>My Stats</li>
+						<li class={styles.menuItem}>Kart Stats</li>
+						<li class={styles.menuItem}>Race Log</li>
+						<li class={styles.menuItem}><IndexLink to="/about" activeClassName={styles.menuItemActive}>About</IndexLink></li>
 					</ul>
 				</nav>
-				<div className={styles.balance}>
-					Coin Balance
+				<div id={styles.balanceContainer}>
+					Coin Balance: <span id={styles.balance}>{this.props.user.balance}</span>
 				</div>
 			</div>
 		)

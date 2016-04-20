@@ -1,19 +1,20 @@
 "use strict"
 
 import { connect } from "react-redux"
-import { selectKart } from "../ducks/karts"
+import { setSelectedKart } from "../ducks/user"
 import KartSelect from "../components/KartSelect"
 
 function mapStateToProps(state, ownProps) {
-	return {
-		karts: state.karts
+	return {		
+		karts: state.karts,
+		user: state.user
 	}
 }
 
 function mapDispatchToProps(dispatch, ownProps) {
 	return {
-		selectKart: kartId => {			
-			dispatch(selectKart(kartId))
+		setSelectedKart: kartId => {			
+			dispatch(setSelectedKart(kartId))
 		}
 	}
 }
