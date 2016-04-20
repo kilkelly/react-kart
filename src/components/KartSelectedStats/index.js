@@ -31,8 +31,7 @@ const KartSelectedStats = React.createClass({
 							<div>
 								<span className={styles.selected}>{selectedKart.name}</span>
 							</div>
-							<div>Wins: {selectedKart.wins}</div>	
-							<div>Losses: {selectedKart.losses}</div>													
+							<div>Wins: {selectedKart.wins} Losses: {selectedKart.losses}</div>													
 							<div>Lucky Index: {luckyIndex}%</div>													
 						</div>
 	

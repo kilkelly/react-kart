@@ -1,7 +1,7 @@
 "use strict"
 
 import { connect } from "react-redux"
-import { selectKart } from "../ducks/user"
+import { startRace } from "../ducks/currentRace"
 import CreateBet from "../components/CreateBet"
 
 function mapStateToProps(state, ownProps) {
@@ -10,6 +10,15 @@ function mapStateToProps(state, ownProps) {
 	}
 }
 
+function mapDispatchToProps(dispatch, ownProps) {
+	return {
+		startRace : betAmount => {
+			dispatch(startRace(betAmount))
+		}
+	}
+}
+
 export default connect(	
-	mapStateToProps
+	mapStateToProps,
+	mapDispatchToProps
 )(CreateBet)

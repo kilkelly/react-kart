@@ -1,6 +1,7 @@
 "use strict"
 
 import React from "react"
+import Race from "../Race"
 import RaceSetup from "../RaceSetup"
 
 const Play = React.createClass({
@@ -9,9 +10,9 @@ const Play = React.createClass({
 		return (
 			<div>
 				{
-					!this.props.currentRace.inProgress
-					? <RaceSetup />
-					: ""
+					this.props.currentRace.inProgress
+					? <Race />
+					: <RaceSetup />
 				}
 			</div>
 		)
