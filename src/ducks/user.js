@@ -7,8 +7,8 @@
 // CONSTANTS
 // ----------------------------------------------------------------
 
-const WINS_INCREMENT = "react-kart/user/WINS_INCREMENT"
-const LOSSES_INCREMENT = "react-kart/user/LOSSES_INCREMENT"
+const WINS_INCREMENT_USER = "react-kart/user/WINS_INCREMENT_USER"
+const LOSSES_INCREMENT_USER = "react-kart/user/LOSSES_INCREMENT_USER"
 const BALANCE_ADD = "react-kart/user/BALANCE_ADD"
 const BALANCE_SUBTRACT = "react-kart/user/BALANCE_SUBTRACT"
 const RACES_INCREMENT = "react-kart/user/RACES_INCREMENT"
@@ -20,9 +20,9 @@ const SET_SELECTED_KART = "react-kart/user/SET_SELECTED_KART"
 export default function reducer(state = createUser(), action) {
 
 	switch (action.type) {
-		case WINS_INCREMENT:
+		case WINS_INCREMENT_USER:
 			return Object.assign({}, state, { wins: state.wins + 1 })
-		case LOSSES_INCREMENT:
+		case LOSSES_INCREMENT_USER:
 			return Object.assign({}, state, { losses: state.losses + 1 })			
 		case BALANCE_ADD:
 			return Object.assign({}, state, { balance: state.balance + action.value })
@@ -47,12 +47,12 @@ export default function reducer(state = createUser(), action) {
 // ACTION CREATORS
 // ----------------------------------------------------------------
 
-export function winsIncrement() {
-	return { type: WINS_INCREMENT }
+export function winsIncrementUser() {
+	return { type: WINS_INCREMENT_USER }
 }
 
-export function lossesIncrement() {
-	return { type: LOSSES_INCREMENT }
+export function lossesIncrementUser() {
+	return { type: LOSSES_INCREMENT_USER }
 }
 
 export function balanceAdd(value) {

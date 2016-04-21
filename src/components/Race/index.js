@@ -12,18 +12,20 @@ const Race = React.createClass({
 	render: function() {
 
 		return (
-			<div className={styles.table}>
-				<div className={styles.cell}>	
+			<div>
+				<div className={styles.table}>
+					<div className={styles.cell}>	
 
-					<___RaceTrack />
+						<___RaceTrack />
 
+					</div>
+					<div className={styles.cell}>
+
+						<RaceResult />
+
+					</div>
 				</div>
-				<div className={styles.cell}>
-
-					<RaceResult />
-
-				</div>
-			</div>		
+			</div>			
 		)
 
 	}

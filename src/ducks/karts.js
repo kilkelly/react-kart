@@ -13,8 +13,8 @@ import {
 
 // CONSTANTS
 // ----------------------------------------------------------------
-const WINS_INCREMENT = "react-kart/karts/WINS_INCREMENT"
-const LOSSES_INCREMENT = "react-kart/karts/LOSSES_INCREMENT"
+const WINS_INCREMENT_KART = "react-kart/karts/WINS_INCREMENT_KART"
+const LOSSES_INCREMENT_KART = "react-kart/karts/LOSSES_INCREMENT_KART"
 const MOVE_KART = "react-kart/karts/MOVE_KART"
 const MOVE_KARTS_TO_START = "react-kart/karts/MOVE_KARTS_TO_START"
 
@@ -31,7 +31,7 @@ export default function reducer(state = createKarts(NUMBER_OF_KARTS), action) {
 	let objectToChange // some actions will need this variable to change a state object's value/s
 
 	switch (action.type) {
-		case WINS_INCREMENT:
+		case WINS_INCREMENT_KART:
 
 			stateClone = clone(state) // clone state to avoid mutation
 			objectToChange = stateClone[action.kartId]
@@ -41,7 +41,7 @@ export default function reducer(state = createKarts(NUMBER_OF_KARTS), action) {
 			return stateClone
 
 		// -----------------------------------------------------
-		case LOSSES_INCREMENT:
+		case LOSSES_INCREMENT_KART:
 
 			stateClone = clone(state) // clone state to avoid mutation
 			objectToChange = stateClone[action.kartId]
@@ -56,7 +56,7 @@ export default function reducer(state = createKarts(NUMBER_OF_KARTS), action) {
 			stateClone = clone(state) // clone state to avoid mutation
 
 			objectToChange = stateClone[action.kartId]
-			objectToChange.distance = objectToChange.distance + action.distanceToMove
+			objectToChange.distance = objectToChange.distance + MOVE_KART_DISTANCE
 
 			return stateClone			
 
@@ -82,9 +82,9 @@ export default function reducer(state = createKarts(NUMBER_OF_KARTS), action) {
 /**
 	@kartId - kart to increase win total for
 */
-export function winsIncrement(kartId) {
+export function winsIncrementKart(kartId) {
 	return { 
-		type: WINS_INCREMENT,
+		type: WINS_INCREMENT_KART,
 		kartId
 	}
 }
@@ -92,22 +92,20 @@ export function winsIncrement(kartId) {
 /**
 	@kartId - kart to increase losses total for
 */
-export function lossesIncrement(kartId) {
+export function lossesIncrementKart(kartId) {
 	return { 
-		type: LOSSES_INCREMENT,
+		type: LOSSES_INCREMENT_KART,
 		kartId
 	}
 }
 
 /**
-	@kartId - id of kart to move
-	@distanceToMove - distance to move towards finish line
+	@kartId - id of kart to move	
 */
-export function moveKart(kartId, distanceToMove) {
+export function moveKart(kartId) {
 	return { 
 		type: MOVE_KART,
-		kartId,
-		distanceToMove
+		kartId
 	}
 }
 
@@ -138,8 +136,8 @@ export function createKarts(numberOfKarts, testMode = false) {
 			id: i,
 			name: karts[i].name,
 		 	image: karts[i].image,
-		 	wins: 2,
-		 	losses: 77,
+		 	wins: 0,
+		 	losses: 0,
 		 	distance: 0
 		}
 	}

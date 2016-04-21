@@ -157,8 +157,10 @@ export function resetCurrentRace(numberOfKarts) {
 	const currentRace = {
 		currentRaceId: null,
 		inProgress: false,
+		//inProgress: true,
 		rankings,
 		betAmount: 0,		
+		//betAmount: 10,		
 		winnerId: null		
 	}
 

@@ -10,7 +10,7 @@ const Navigation = React.createClass({
 
 	render: function() {
 		return (
-			<div id={styles.nav}>					
+			<div id={styles.wrapper}>					
 
 				<input type="checkbox" id={styles.menuCheckbox} />
 				<label htmlFor={styles.menuCheckbox} id={styles.labelMenu}>Menu</label>				

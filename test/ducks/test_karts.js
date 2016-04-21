@@ -8,8 +8,8 @@ import {
 } from "../../src/core/constants"
 
 import reducer,	{
-	winsIncrement,
-	lossesIncrement,
+	winsIncrementKart,
+	lossesIncrementKart,
 	moveKart,
 	moveKartsToStart,		
 	createKarts,		// used for testing purposes
@@ -33,7 +33,7 @@ describe('"karts" reducer', () => {
 			expectedState[kartId].wins = expectedState[kartId].wins + 1
 			//*
 
-			const nextState = reducer(prevState, winsIncrement(kartId))
+			const nextState = reducer(prevState, winsIncrementKart(kartId))
 
 			expect(nextState).to.deep.equal(expectedState)
 		})
@@ -51,7 +51,7 @@ describe('"karts" reducer', () => {
 			expectedState[kartId].losses = expectedState[kartId].losses + 1
 			//*
 
-			const nextState = reducer(prevState, lossesIncrement(kartId))
+			const nextState = reducer(prevState, lossesIncrementKart(kartId))
 						
 			expect(nextState).to.deep.equal(expectedState)
 		})				
@@ -63,7 +63,7 @@ describe('"karts" reducer', () => {
 		it("kart moved", () => {			
 
 			const prevState = clone(initialState)
-			const nextState = reducer(prevState, moveKart(kartId, MOVE_KART_DISTANCE))			
+			const nextState = reducer(prevState, moveKart(kartId))			
 
 			expect(nextState[kartId].distance).to.equal(MOVE_KART_DISTANCE)
 		})

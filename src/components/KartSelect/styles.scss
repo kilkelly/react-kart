@@ -1,9 +1,11 @@
+/*KartSelect*/
 
 @import "../../core/constants";
 
 .table {
-	display: table;	
 	border-spacing: 0.5rem;
+	display: table;	
+	width: 100%;	
 }
 
 .row {

@@ -3,8 +3,8 @@
 import { expect } from "chai"
 
 import reducer,	{
-	winsIncrement,
-	lossesIncrement,
+	winsIncrementUser,
+	lossesIncrementUser,
 	balanceAdd,
 	balanceSubtract,
 	racesIncrement,
@@ -26,7 +26,7 @@ describe('"user" reducer', () => {
 
 	describe("wins", () => {
 		it("incremented", () => {
-			const nextState = reducer(initialState, winsIncrement())
+			const nextState = reducer(initialState, winsIncrementUser())
 			const expectedState = Object.assign({}, initialState, { wins: 1 })
 
 			expect(nextState).to.deep.equal(expectedState)
@@ -37,7 +37,7 @@ describe('"user" reducer', () => {
 
 	describe("losses", () => {
 		it("incremented", () => {
-			const nextState = reducer(initialState, lossesIncrement())
+			const nextState = reducer(initialState, lossesIncrementUser())
 			const expectedState = Object.assign({}, initialState, { losses: 1 })
 			
 			expect(nextState).to.deep.equal(expectedState)

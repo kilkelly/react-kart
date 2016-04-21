@@ -8,9 +8,16 @@ const RaceLine = React.createClass({
 
 	render: function() {
 
+		let imgStyle = {
+			height: "auto",
+			left: this.props.distanceTraveled + "%",
+			position: "relative",			
+			width: "5%"
+		}
+		
 		return (
-			<div>
-				raceline<img src={this.props.kartImage} />
+			<div className={styles.line}>
+				<img src={this.props.kartImage} style={imgStyle} />
 			</div>
 		)
 

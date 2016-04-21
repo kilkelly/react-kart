@@ -20,7 +20,7 @@ const CreateBet = React.createClass({
 
 		let betAmount = +ReactDOM.findDOMNode(this.refs.betAmount).value 	
 
-		this.props.startRace(betAmount)
+		this.props.startRace(79, betAmount)
 	},
 
 	// -------------------------------------------------------------------------------

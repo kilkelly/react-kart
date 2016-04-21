@@ -1,8 +1,9 @@
+/*Race*/
 
 @import "../../core/constants";
 
 .table {
-	display: block;		
+	display: block;			
 }
 
 .cell {
@@ -14,6 +15,7 @@
 	
 	.table {
 		display: table;	
+		width: 100%;
 	}
 
 	.cell {

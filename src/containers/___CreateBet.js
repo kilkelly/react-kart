@@ -12,8 +12,8 @@ function mapStateToProps(state, ownProps) {
 
 function mapDispatchToProps(dispatch, ownProps) {
 	return {
-		startRace : betAmount => {
-			dispatch(startRace(betAmount))
+		startRace : (raceId, betAmount) => {
+			dispatch(startRace(raceId, betAmount))
 		}
 	}
 }
