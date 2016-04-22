@@ -78,6 +78,7 @@ const RaceTrack = React.createClass({
 				}
 			}			
 
+			this.props.updateRankings(this.props.karts)
 			this.props.endRace(winner)
 		}
 		//*

@@ -2,7 +2,7 @@
 @import "./constants";
 
 /* Global styles, including mobile-first responsive grid */
-:global(html) { font-size:12px; }
+:global(html) { font-size:16px; }
 :global(body) { background-color: #CCC; font-family: 'Slabo 27px', serif; }
 :global(.row), :global(.column) {	box-sizing: border-box; }
 :global(.row::before), :global(.row::after) { content: " ";	display: table;	}

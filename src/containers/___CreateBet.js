@@ -6,7 +6,11 @@ import CreateBet from "../components/CreateBet"
 
 function mapStateToProps(state, ownProps) {
 	return {
-		user: state.user
+		user: state.user,
+		previousRaceId:
+			state.raceLog.length > 0 
+			? state.raceLog[0].raceId
+			: 0
 	}
 }
 

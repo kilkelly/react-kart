@@ -19,24 +19,29 @@ const CreateBet = React.createClass({
 	_startRace: function() {
 
 		let betAmount = +ReactDOM.findDOMNode(this.refs.betAmount).value 	
+		let raceId = this.props.previousRaceId + 1
 
-		this.props.startRace(79, betAmount)
+		this.props.startRace(raceId, betAmount)
 	},
 
 	// -------------------------------------------------------------------------------
 
+	//** Check whether user entered a valid bet amount
 	_validateBet: function() {
 
 		// plus sign (+) converts from string to number
 		let betAmount = +ReactDOM.findDOMNode(this.refs.betAmount).value 	
 
+		// valid bet amount
 		if (typeof betAmount === "number" 
 				&& betAmount > 0
 				&& betAmount <= this.props.user.balance) {	// valid
 			this.setState({
 				invalidBet: false
 			})
-		} else {	// invalid
+		} 
+		// invalid bet amount
+		else {	
 			this.setState({
 				invalidBet: true
 			})
@@ -55,13 +60,13 @@ const CreateBet = React.createClass({
 					? <div>
 						<div>Coin Balance: {this.props.user.balance}</div>
 						<div>
-							Enter Bet 
+							Enter Bet:  
 							<input 
 								ref="betAmount"
 								type="text"
 								id={styles.betAmount}
 								defaultValue={this.state.initialBet}
-								onChange={this._validateBet}/>							
+								onChange={this._validateBet}/> Coins							
 						</div>
 						<div>
 							{this.state.invalidBet	? <span>Invalid bet amount, enter 1 - {this.props.user.balance}</span> : ""}

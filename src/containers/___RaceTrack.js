@@ -3,7 +3,7 @@
 import { connect } from "react-redux"
 import { winsIncrementUser, lossesIncrementUser, balanceAdd, balanceSubtract } from "../ducks/user"
 import { moveKart, winsIncrementKart, lossesIncrementKart } from "../ducks/karts"
-import { endRace } from "../ducks/currentRace"
+import { updateRankings, endRace } from "../ducks/currentRace"
 import RaceTrack from "../components/RaceTrack"
 
 function mapStateToProps(state, ownProps) {
@@ -16,6 +16,7 @@ function mapStateToProps(state, ownProps) {
 
 function mapDispatchToProps(dispatch, ownProps) {
 	return {
+		updateRankings: (karts) => {dispatch(updateRankings(karts))},
 		endRace: (winnerId) => {dispatch(endRace(winnerId))},
 		moveKart: (kartId) => {dispatch(moveKart(kartId))},
 		winsIncrementUser: () => {dispatch(winsIncrementUser())},
