@@ -93,7 +93,7 @@ export function createUser() {
 	return {
 		wins: 0,
 		losses: 0,
-		balance: 10,
+		balance: 250,
 		races: 0,
 		selectedKart: null
 	}

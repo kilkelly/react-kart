@@ -1,7 +1,14 @@
 "use strict"
 
 import React from "react"
-import { NUMBER_OF_KARTS, RACE_DISTANCE } from "../../core/constants"
+
+import { 
+	NUMBER_OF_KARTS,
+	RACE_DISTANCE,
+	MOVE_KART_DISTANCE,
+	RACE_SPEED
+} from "../../core/constants"
+
 import RaceLine from "../RaceLine"
 import styles from "./styles.scss"
 
@@ -11,7 +18,7 @@ const RaceTrack = React.createClass({
 	// race in set in motion inside this lifecycle function
 	componentDidMount: function() {
 		this.setState({			
-			race: setInterval(this._race, 1000)
+			race: setInterval(this._race, RACE_SPEED)
 		})	
 	},
 
@@ -27,7 +34,7 @@ const RaceTrack = React.createClass({
 	_winner: function() {
 
 		for (let i = 1; i <= NUMBER_OF_KARTS; i = i + 1) {
-			if (this.props.karts[i].distance >= RACE_DISTANCE) {
+			if (this.props.karts[i].distance >= RACE_DISTANCE - MOVE_KART_DISTANCE) {
 				return this.props.karts[i].id
 			}
 		}
@@ -40,15 +47,13 @@ const RaceTrack = React.createClass({
 	*/
 	_race: function() { 
 	
-		this.props.moveKart(1)
+		this.props.moveKart(Math.floor(Math.random() * (NUMBER_OF_KARTS)) + 1)		
 
 		//** Is there a winner? If so then end the race
 		let winner = this._winner()
 		if (winner) {					
 			//  stop the race logic loop
-			clearInterval(this.state.race)
-			
-			this.props.endRace(winner)	
+			clearInterval(this.state.race)			
 			
 			if (this.props.user.selectedKart === winner) {
 				// user bet on a winner
@@ -72,6 +77,8 @@ const RaceTrack = React.createClass({
 					this.props.lossesIncrementKart(this.props.karts[i].id)
 				}
 			}			
+
+			this.props.endRace(winner)
 		}
 		//*
 
@@ -87,7 +94,8 @@ const RaceTrack = React.createClass({
 				<RaceLine
 					key={i}
 					kartImage={this.props.karts[i].image}					
-					distanceTraveled={this.props.karts[i].distance * 100 / RACE_DISTANCE} />
+					distanceTraveled={this.props.karts[i].distance * 100 / RACE_DISTANCE}
+					selected={this.props.karts[i].id === this.props.user.selectedKart} />
 			)		
 		}
 

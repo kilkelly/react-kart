@@ -17,7 +17,7 @@ const KartSelectedStats = React.createClass({
 			if (this.props.karts[i].id === this.props.user.selectedKart) {				
 				selectedKart = this.props.karts[i]
 				if (selectedKart.wins + selectedKart.losses > 0) {
-					luckyIndex = parseFloat(selectedKart.wins * 100 / selectedKart.losses).toFixed(2)
+					luckyIndex = Math.floor(selectedKart.wins * 100 / (selectedKart.wins + selectedKart.losses))
 				}				
 			}
 		}

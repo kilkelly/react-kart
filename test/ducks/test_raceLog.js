@@ -50,8 +50,6 @@ describe('"raceLog" reducer', () => {
 		odds
 	}		
 
-	console.log(race)	
-
 	describe("one race", () => {
 		it("logged successfully", () => {
 

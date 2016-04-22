@@ -11,21 +11,19 @@ function mapStateToProps(state, ownProps) {
 		karts: state.karts,
 		user: state.user,
 		currentRace: state.currentRace
-
-
 	}
 }
 
 function mapDispatchToProps(dispatch, ownProps) {
 	return {
-		endRace: (winner) => {	dispatch(endRace(winner)) },
-		moveKart: (kartId) => {	dispatch(moveKart(kartId)) },
-		winsIncrementUser: () => {	dispatch(winsIncrementUser()) },
-		lossesIncrementUser: () => {	dispatch(lossesIncrementUser()) },
-		winsIncrementKart: (kartId) => {	dispatch(winsIncrementKart(kartId)) },		
-		lossesIncrementKart: (kartId) => {	dispatch(lossesIncrementKart(kartId)) },		
-		balanceAdd: (betAmount) => {	dispatch(balanceAdd(betAmount)) },
-		balanceSubtract: (betAmount) => {	dispatch(balanceSubtract(betAmount)) }
+		endRace: (winnerId) => {dispatch(endRace(winnerId))},
+		moveKart: (kartId) => {dispatch(moveKart(kartId))},
+		winsIncrementUser: () => {dispatch(winsIncrementUser())},
+		lossesIncrementUser: () => {dispatch(lossesIncrementUser())},
+		winsIncrementKart: (kartId) => {dispatch(winsIncrementKart(kartId))},		
+		lossesIncrementKart: (kartId) => {dispatch(lossesIncrementKart(kartId))},
+		balanceAdd: (betAmount) => {dispatch(balanceAdd(betAmount))},
+		balanceSubtract: (betAmount) => {dispatch(balanceSubtract(betAmount))}
 	}
 }
 

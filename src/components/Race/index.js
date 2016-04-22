@@ -3,7 +3,7 @@
 import React from "react"
 import { NUMBER_OF_KARTS } from "../../core/constants"
 import ___RaceTrack from "../../containers/___RaceTrack"
-import RaceResult from "../RaceResult"
+import ___RaceResult from "../../containers/___RaceResult"
 import styles from "./styles.scss"
 
 // -------------------------------------------------------------------------------
@@ -21,7 +21,7 @@ const Race = React.createClass({
 					</div>
 					<div className={styles.cell}>
 
-						<RaceResult />
+						<___RaceResult />
 
 					</div>
 				</div>

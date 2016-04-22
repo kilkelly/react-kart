@@ -1,6 +1,10 @@
 /*RaceLine*/
 
-.line {	
+.line, .selected {	
 	border-top: 2px dashed #AAA;	
 	width: 100%;
+}
+
+.selected {	
+	background-color: #FFC;
 }

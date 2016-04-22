@@ -41,7 +41,6 @@ export default function reducer(state = resetCurrentRace(NUMBER_OF_KARTS), actio
 		case END_RACE:
 
 			return Object.assign({}, state, { 
-				inProgress: false,
 				winnerId: action.winnerId
 			})		
 
@@ -157,10 +156,8 @@ export function resetCurrentRace(numberOfKarts) {
 	const currentRace = {
 		currentRaceId: null,
 		inProgress: false,
-		//inProgress: true,
 		rankings,
-		betAmount: 0,		
-		//betAmount: 10,		
+		betAmount: 0,				
 		winnerId: null		
 	}
 
