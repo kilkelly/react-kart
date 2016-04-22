@@ -1,7 +1,6 @@
 "use strict"
 
 import React from "react"
-import clone from "clone"
 import styles from "./styles.scss"
 
 // -------------------------------------------------------------------------------
@@ -11,7 +10,7 @@ const RaceResult = React.createClass({
 
 		this.props.logRace({
 			raceId: this.props.currentRace.currentRaceId,
-			results: clone(this.props.currentRace.rankings),
+			results: this.props.currentRace.rankings,
 			selectedKart: this.props.user.selectedKart,
 
 			betResult: 	this.props.currentRace.winnerId === this.props.user.selectedKart
