@@ -4,6 +4,7 @@ import { connect } from "react-redux"
 import { winsIncrementUser, lossesIncrementUser, balanceAdd, balanceSubtract } from "../ducks/user"
 import { moveKart, winsIncrementKart, lossesIncrementKart } from "../ducks/karts"
 import { updateRankings, endRace } from "../ducks/currentRace"
+import { logRace } from "../ducks/raceLog"
 import RaceTrack from "../components/RaceTrack"
 
 function mapStateToProps(state, ownProps) {
@@ -24,7 +25,8 @@ function mapDispatchToProps(dispatch, ownProps) {
 		winsIncrementKart: (kartId) => {dispatch(winsIncrementKart(kartId))},		
 		lossesIncrementKart: (kartId) => {dispatch(lossesIncrementKart(kartId))},
 		balanceAdd: (betAmount) => {dispatch(balanceAdd(betAmount))},
-		balanceSubtract: (betAmount) => {dispatch(balanceSubtract(betAmount))}
+		balanceSubtract: (betAmount) => {dispatch(balanceSubtract(betAmount))},		
+		logRace: (race) => {dispatch(logRace(race))}
 	}
 }
 

@@ -24,8 +24,8 @@ const Navigation = React.createClass({
 					<ul>
 						<li class={styles.menuItem}><IndexLink to="/" activeClassName={styles.menuItemActive}>Play</IndexLink></li>
 						<li class={styles.menuItem}>My Stats</li>
-						<li class={styles.menuItem}>Kart Stats</li>
-						<li class={styles.menuItem}><IndexLink to="/racelog" activeClassName={styles.menuItemActive}>Race Log</IndexLink></li>
+						<li class={styles.menuItem}><IndexLink to="/racelog" activeClassName={styles.menuItemActive}>Race Log</IndexLink></li>						
+						<li class={styles.menuItem}>Kart Stats</li>						
 						<li class={styles.menuItem}><IndexLink to="/about" activeClassName={styles.menuItemActive}>About</IndexLink></li>
 					</ul>
 				</nav>

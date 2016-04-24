@@ -6,23 +6,13 @@ import styles from "./styles.scss"
 // -------------------------------------------------------------------------------
 const RaceResult = React.createClass({
 
+	componentWillUnmount: function() {		
+		this.props.resetRace()		
+	},
+
 	_nextRace: function() {		
-
-		this.props.logRace({
-			raceId: this.props.currentRace.currentRaceId,
-			results: this.props.currentRace.rankings,
-			selectedKart: this.props.user.selectedKart,
-
-			betResult: 	this.props.currentRace.winnerId === this.props.user.selectedKart
-						? this.props.currentRace.betAmount
-						: -this.props.currentRace.betAmount,
-
-			odds: 0			
-
-		})		
-
-		this.props.moveKartsToStart()		
 		this.props.resetRace()
+		this.props.moveKartsToStart()
 	},
 
 	render: function() {

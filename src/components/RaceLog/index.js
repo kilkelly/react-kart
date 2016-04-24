@@ -11,8 +11,8 @@ const RaceLog = React.createClass({
 
 		return (
 			<div>
-				{this.props.raceLog.map(entry => {
-					return <RaceLogEntry entry={entry} karts={this.props.karts}/>
+				{this.props.raceLog.map((entry, index) => {
+					return <RaceLogEntry key={index} entry={entry} karts={this.props.karts}/>
 				})}
 			</div>			
 		)

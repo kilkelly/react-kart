@@ -45,9 +45,7 @@ const RaceTrack = React.createClass({
 	/**
 		Handles the race itself i.e. moving karts and crowning the winner
 	*/
-	_race: function() { 
-	
-		this.props.moveKart(Math.floor(Math.random() * (NUMBER_OF_KARTS)) + 1)		
+	_race: function() { 			
 
 		//** Is there a winner? If so then end the race
 		let winner = this._winner()
@@ -77,9 +75,30 @@ const RaceTrack = React.createClass({
 					this.props.lossesIncrementKart(this.props.karts[i].id)
 				}
 			}			
-
+		
+			// update kart rankings before race logging
 			this.props.updateRankings(this.props.karts)
-			this.props.endRace(winner)
+
+			// archive race results in the log
+			this.props.logRace({
+				raceId: this.props.currentRace.currentRaceId,
+				results: this.props.currentRace.rankings,
+				selectedKart: this.props.user.selectedKart,
+
+				betResult: 	this.props.currentRace.winnerId === this.props.user.selectedKart
+							? this.props.currentRace.betAmount
+							: -this.props.currentRace.betAmount,
+
+				odds: 0			
+
+			})		
+
+			this.props.endRace(winner)	
+		}
+		// there is no winner yet so continue the race
+		else {
+			// move a randomly chosen kart further along the track
+			this.props.moveKart(Math.floor(Math.random() * (NUMBER_OF_KARTS)) + 1)		
 		}
 		//*
 
