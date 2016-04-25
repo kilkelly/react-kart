@@ -6,7 +6,7 @@ import styles from "./styles.scss"
 // -------------------------------------------------------------------------------
 const RaceLine = React.createClass({
 
-	render: function() {
+	render: function() {		
 
 		let imgStyle = {			
 			height: "auto",

@@ -107,11 +107,12 @@ const RaceTrack = React.createClass({
 	// -------------------------------------------------------------------------------
 	render: function() {
 
-		console.log("RaceTrack render called")
+		console.log("RaceTrack render called")		
 
 		let raceLines = []
 
-		for (let i = 1; i <= NUMBER_OF_KARTS; i = i + 1) {	
+		for (let i = 1; i <= NUMBER_OF_KARTS; i = i + 1) {			
+
 			raceLines.push(			
 				<RaceLine
 					key={i}

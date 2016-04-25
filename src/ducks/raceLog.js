@@ -1,5 +1,7 @@
 "use strict"
 
+import { fromJS } from "immutable"
+
 // The Ducks File Structure for Redux
 // - https://medium.com/@scbarrus/the-ducks-file-structure-for-redux-d63c41b7035c#.6rrizzva3
 
@@ -15,7 +17,7 @@ const LOG_RACE = "react-kart/raceLog/LOG_RACE"
 	@state - races logged so far
 	@action - actions to be performed on race log
 */
-export default function reducer(state = [{
+export default function reducer(state = fromJS([{
 	raceId: 1,
 	results: {
 		1: {kartId: 2},
@@ -30,24 +32,7 @@ export default function reducer(state = [{
 	selectedKart: 3,
 	betResult: -10,
 	odds: 0
-},
-{
-	raceId: 2,
-	results: {
-		1: {kartId: 6},
-		2: {kartId: 4},
-		3: {kartId: 2},
-		4: {kartId: 8},
-		5: {kartId: 7},
-		6: {kartId: 1},
-		7: {kartId: 3},
-		8: {kartId: 5}
-	},
-	selectedKart: 6,
-	betResult: 50,
-	odds: 0
-}
-], action) {	
+}]), action) {	
 
 	switch (action.type) {
 		case LOG_RACE:
@@ -62,7 +47,8 @@ export default function reducer(state = [{
 			//*						
 
 			// return a new array with the current race logged with the previous races
-			return [race].concat(state)
+			//return [race].concat(state)
+			return state.unshift(fromJS(race))
 
 		default:
 			return state

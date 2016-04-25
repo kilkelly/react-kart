@@ -6,11 +6,12 @@ import { moveKartsToStart } from "../ducks/karts"
 import { setSelectedKart } from "../ducks/user"
 import Play from "../components/Play"
 
-function mapStateToProps(state, ownProps) {
+function mapStateToProps(state, ownProps) {	
+
 	return {
 		user: state.user,
-		karts: state.karts,
-		currentRace: state.currentRace
+		karts: state.karts.toJS(),
+		currentRace: state.currentRace.toJS()
 	}
 }
 

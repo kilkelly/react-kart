@@ -8,8 +8,8 @@ import RaceResult from "../components/RaceResult"
 function mapStateToProps(state, ownProps) {
 	return {
 		user: state.user,
-		currentRace: state.currentRace,
-		karts: state.karts
+		currentRace: state.currentRace.toJS(),
+		karts: state.karts.toJS()
 	}
 }
 

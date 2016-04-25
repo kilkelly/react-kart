@@ -1,6 +1,6 @@
 "use strict"
 
-import clone from "clone"
+import { fromJS } from "immutable"
 
 import { 
 	NUMBER_OF_KARTS,
@@ -25,51 +25,39 @@ const MOVE_KARTS_TO_START = "react-kart/karts/MOVE_KARTS_TO_START"
 	@state - state of karts
 	@action - action to be peformed on karts
 */
-export default function reducer(state = createKarts(NUMBER_OF_KARTS), action) {	
-
-	let stateClone // some actions will need this variable to clone existing state into
-	let objectToChange // some actions will need this variable to change a state object's value/s
+export default function reducer(state = fromJS(createKarts(NUMBER_OF_KARTS)), action) {	
 
 	switch (action.type) {
 		case WINS_INCREMENT_KART:
 
-			stateClone = clone(state) // clone state to avoid mutation
-			objectToChange = stateClone[action.kartId]
-
-			objectToChange.wins = objectToChange.wins + 1
-
-			return stateClone
+			let wins = state.getIn([action.kartId, "wins"])
+			return state.setIn([action.kartId, "wins"], wins + 1)
 
 		// -----------------------------------------------------
 		case LOSSES_INCREMENT_KART:
 
-			stateClone = clone(state) // clone state to avoid mutation
-			objectToChange = stateClone[action.kartId]
-
-			objectToChange.losses = objectToChange.losses + 1
-
-			return stateClone
+			let losses = state.getIn([action.kartId, "losses"])
+			return state.setIn([action.kartId, "losses"], losses + 1)
 
 		// -----------------------------------------------------
 		case MOVE_KART:
-
-			stateClone = clone(state) // clone state to avoid mutation
-
-			objectToChange = stateClone[action.kartId]
-			objectToChange.distance = objectToChange.distance + MOVE_KART_DISTANCE
-
-			return stateClone			
+			
+			let kartId = action.kartId.toString()
+			let distance = state.getIn([kartId, "distance"])									
+			return state.setIn([kartId, "distance"], distance + MOVE_KART_DISTANCE)	
 
 		// -----------------------------------------------------
 		case MOVE_KARTS_TO_START:
 
-			stateClone = clone(state) // clone state to avoid mutation
+			// stateClone = clone(state) // clone state to avoid mutation
 
-			for (let i = 1; i <= NUMBER_OF_KARTS; i = i + 1) {
-				stateClone[i].distance = 0
-			}
+			// for (let i = 1; i <= NUMBER_OF_KARTS; i = i + 1) {			
+			// 	state = state.setIn([action.kartId, "distance"], 0)
+			// }
 
-			return stateClone	
+			// return state	
+
+			return state.map(kart => kart.set("distance", 0))
 
 		default:
 			return state

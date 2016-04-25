@@ -5,8 +5,8 @@ import RaceLog from "../components/RaceLog"
 
 function mapStateToProps(state, ownProps) {
 	return {		
-		karts: state.karts,
-		raceLog: state.raceLog
+		karts: state.karts.toJS(),
+		raceLog: state.raceLog.toJS()
 	}
 }
 

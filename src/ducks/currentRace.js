@@ -1,5 +1,6 @@
 "use strict"
 
+import { fromJS } from "immutable"
 import { NUMBER_OF_KARTS } from "../core/constants"
 
 // The Ducks File Structure for Redux
@@ -20,14 +21,14 @@ const UPDATE_RANKINGS = "react-kart/currentRace/UPDATE_RANKINGS"
 	@state - state of current race
 	@action - action to be peformed on current race
 */
-export default function reducer(state = resetCurrentRace(NUMBER_OF_KARTS), action) {	
+export default function reducer(state = fromJS(resetCurrentRace(NUMBER_OF_KARTS)), action) {	
 
 	switch (action.type) {
 
 		// -----------------------------------------------------
 		case START_RACE:
 
-			return Object.assign({}, state, { 
+			return state.merge({ 
 				currentRaceId: action.raceId,
 				inProgress: true,
 				betAmount: action.betAmount
@@ -36,14 +37,14 @@ export default function reducer(state = resetCurrentRace(NUMBER_OF_KARTS), actio
 		// -----------------------------------------------------
 		case END_RACE:
 
-			return Object.assign({}, state, { 
+			return state.merge({ 
 				winnerId: action.winnerId
-			})		
+			})
 
 		// -----------------------------------------------------
 		case RESET_RACE:
 
-			return resetCurrentRace(NUMBER_OF_KARTS)		
+			return fromJS(resetCurrentRace(NUMBER_OF_KARTS))
 
 		// -----------------------------------------------------
 		case UPDATE_RANKINGS:
@@ -83,7 +84,7 @@ export default function reducer(state = resetCurrentRace(NUMBER_OF_KARTS), actio
 			})
 			//*
 
-			return Object.assign({}, state, { rankings })
+			return state.merge({ rankings })
 
 		default:
 			return state
