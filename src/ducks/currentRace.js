@@ -1,6 +1,5 @@
 "use strict"
 
-import clone from "clone"
 import { NUMBER_OF_KARTS } from "../core/constants"
 
 // The Ducks File Structure for Redux
@@ -22,9 +21,6 @@ const UPDATE_RANKINGS = "react-kart/currentRace/UPDATE_RANKINGS"
 	@action - action to be peformed on current race
 */
 export default function reducer(state = resetCurrentRace(NUMBER_OF_KARTS), action) {	
-
-	let stateClone // some actions will need this variable to clone existing state into
-	let objectToChange // some actions will need this variable to change a state object's value/s
 
 	switch (action.type) {
 

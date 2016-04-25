@@ -1,7 +1,7 @@
 "use strict"
 
 import React from "react"
-import ___Navigation from "../../containers/___Navigation"
+import Navigation from "../Navigation"
 import styles from "./styles.scss"
 
 // -------------------------------------------------------------------------------
@@ -10,7 +10,11 @@ const App = React.createClass({
 	render: function() {
 		return (
 			<div>
-				<___Navigation />
+				<Navigation 
+					balance={this.props.balance}
+					wins={this.props.wins}
+					losses={this.props.losses} />
+
 				{this.props.children}
 			</div>
 		)		

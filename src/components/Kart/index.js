@@ -4,28 +4,33 @@ import React from "react"
 import styles from "./style.scss"
 
 // -------------------------------------------------------------------------------
-const Kart = React.createClass({
+const Kart = ({id, image, name, selected, selectKart}) => {
 
-	render: function() {
+	return (
+		<div className={styles.cell}>			
+			<img 
+				className={_selectedOrNot(selected)}
+				src={image}
+				title={name}
+				onClick={selectKart.bind(null, id)} />			
+		</div>		
+	)	
+}
 
-		//** determine styles for this kart		
-		let kartClass = styles.kart
-		if (this.props.selected) {
-			kartClass += " " + styles.selected
-		}
-		//*
+/**
+	Returns style depending on whether kart is selected or not
+	@kartId - id of kart to determine style for
+*/
+function _selectedOrNot(selected) {				
 
-		return (
-			<div className={styles.cell}>			
-				<img 
-					className={kartClass}
-					src={this.props.image}
-					title={this.props.name}
-					onClick={this.props.selectKart} />			
-			</div>		
-		)	
+	let kartClass = styles.kart 	// base styles for kart
+	if (selected) {
+		return kartClass += " " + styles.selected
+	}
+	else {
+		return kartClass
 	}
 
-})
+}
 
 export default Kart

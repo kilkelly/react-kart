@@ -4,7 +4,7 @@ import { syncHistory } from "react-router-redux"
 import rootReducer from "./ducks"
 
 let middleware = [
-	//createLogger()
+	createLogger()
 ]
 
 const finalCreateStore = applyMiddleware(...middleware)(createStore)

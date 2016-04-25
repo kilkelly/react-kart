@@ -75,7 +75,7 @@ const RaceTrack = React.createClass({
 					this.props.lossesIncrementKart(this.props.karts[i].id)
 				}
 			}			
-		
+				
 			// update kart rankings before race logging
 			this.props.updateRankings(this.props.karts)
 
@@ -107,13 +107,15 @@ const RaceTrack = React.createClass({
 	// -------------------------------------------------------------------------------
 	render: function() {
 
+		console.log("RaceTrack render called")
+
 		let raceLines = []
 
 		for (let i = 1; i <= NUMBER_OF_KARTS; i = i + 1) {	
 			raceLines.push(			
 				<RaceLine
 					key={i}
-					kartImage={this.props.karts[i].image}					
+					kartImage={this.props.karts[i].image}
 					distanceTraveled={this.props.karts[i].distance * 100 / RACE_DISTANCE}
 					selected={this.props.karts[i].id === this.props.user.selectedKart} />
 			)		

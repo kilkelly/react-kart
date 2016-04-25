@@ -13,12 +13,18 @@ const Play = React.createClass({
 	},
 
 	render: function() {
+
 		return (
 			<div>
 				{
-					this.props.currentRace.inProgress
+					(this.props.currentRace.inProgress)
+
 					? <Race />
-					: <RaceSetup />
+
+					: <RaceSetup 
+						karts={this.props.karts} 
+						selectKart={this.props.setSelectedKart}
+						selectedKart={this.props.karts[this.props.user.selectedKart]} />
 				}
 			</div>
 		)

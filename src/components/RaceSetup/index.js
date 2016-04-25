@@ -2,8 +2,8 @@
 
 import React from "react"
 import { NUMBER_OF_KARTS } from "../../core/constants"
-import ___KartSelect from "../../containers/___KartSelect"
-import ___KartSelectedStats from "../../containers/___KartSelectedStats"
+import KartSelect from "../KartSelect"
+import KartSelectedStats from "../KartSelectedStats"
 import ___CreateBet from "../../containers/___CreateBet"
 import styles from "./styles.scss"
 
@@ -16,12 +16,17 @@ const RaceSetup = React.createClass({
 			<div className={styles.table}>
 				<div className={styles.cell}>	
 
-					<___KartSelect />
+					<KartSelect 
+						karts={this.props.karts}
+						selectedKart={this.props.selectedKart}
+						selectKart={this.props.selectKart} />
 
 				</div>
 				<div className={styles.cell}>
 
-					<___KartSelectedStats />
+					<KartSelectedStats
+						selectedKart={this.props.selectedKart} />
+
 					<___CreateBet />					
 
 				</div>

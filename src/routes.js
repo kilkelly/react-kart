@@ -23,15 +23,3 @@ export default (history) => {
 	)
 
 }
-
-/*
-		<Router history={history}>
-			<Route path="/" component={AppContainer}>
-				<IndexRoute component={PlayContainer} />
-				<Route path="mystats" component={MyStatsContainer} />
-				<Route path="racerstats(/:kartid)" component={KartStatsContainer} />
-				<Route path="racelog" component={RaceLogContainer} />
-				<Route path="about" component={About} />
-			</Route>
-		</Router>
-*/

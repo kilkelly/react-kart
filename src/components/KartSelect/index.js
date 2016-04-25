@@ -5,47 +5,44 @@ import Kart from "../Kart"
 import styles from "./styles.scss"
 
 // -------------------------------------------------------------------------------
-const KartSelect = React.createClass({
+const KartSelect = ({karts, selectedKart, selectKart}) => {
 
-	/**
-		Returns the JSX needed to display a kart
-		@kartId - id of kart to display
-	*/
-	_generateKartColumn: function(kartId) {				
-		return (
-			<Kart 
-				kartId={kartId}
-				name={this.props.karts[kartId].name}
-				image={this.props.karts[kartId].image}
-				selected={kartId === this.props.user.selectedKart}
-				selectKart={this.props.setSelectedKart.bind(null, kartId)} />
-		)
-	},
-
-	render: function() {
-
-		return (
-			<div className={styles.table}>
-				<div className={styles.row}>
-					<div className={styles.cell}>
-						{this._generateKartColumn(1)}
-						{this._generateKartColumn(2)}
-						{this._generateKartColumn(3)}
-						{this._generateKartColumn(4)}
-					</div>	
+	return (
+		<div className={styles.table}>
+			<div className={styles.row}>
+				<div className={styles.cell}>
+					{_kartColumn(karts[1], selectedKart, selectKart)}
+					{_kartColumn(karts[2], selectedKart, selectKart)}
+					{_kartColumn(karts[3], selectedKart, selectKart)}
+					{_kartColumn(karts[4], selectedKart, selectKart)}
 				</div>	
-				<div className={styles.row}>					
-					<div className={styles.cell}>
-						{this._generateKartColumn(5)}
-						{this._generateKartColumn(6)}
-						{this._generateKartColumn(7)}
-						{this._generateKartColumn(8)}
-					</div>		
-				</div>	
-			</div>			
-		)	
-	}
+			</div>	
+			<div className={styles.row}>					
+				<div className={styles.cell}>
+					{_kartColumn(karts[5], selectedKart, selectKart)}
+					{_kartColumn(karts[6], selectedKart, selectKart)}
+					{_kartColumn(karts[7], selectedKart, selectKart)}
+					{_kartColumn(karts[8], selectedKart, selectKart)}
+				</div>		
+			</div>	
+		</div>			
+	)	
+}
 
-})
+/**
+	Returns the JSX needed to display a kart
+	@kartId - id of kart to display
+*/
+function _kartColumn(kart, selectedKart, selectKart) {				
+
+	return (
+		<Kart 
+			id={kart.id}
+			name={kart.name}
+			image={kart.image}
+			selected={selectedKart && kart.id === selectedKart.id}
+			selectKart={selectKart} />
+	)
+}
 
 export default KartSelect
