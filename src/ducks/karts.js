@@ -25,7 +25,7 @@ const MOVE_KARTS_TO_START = "react-kart/karts/MOVE_KARTS_TO_START"
 	@state - state of karts
 	@action - action to be peformed on karts
 */
-export default function reducer(state = fromJS(createKarts(NUMBER_OF_KARTS)), action) {	
+export default function reducer(state = createKarts(NUMBER_OF_KARTS), action) {	
 
 	let kartId		// used for temporary storage of kart id we are working with
 
@@ -134,7 +134,7 @@ export function createKarts(numberOfKarts, testMode = false) {
 		}
 	}
 
-	return initialState
+	return fromJS(initialState)
 }
 
 

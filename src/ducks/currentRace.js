@@ -21,7 +21,7 @@ const UPDATE_RANKINGS = "react-kart/currentRace/UPDATE_RANKINGS"
 	@state - state of current race
 	@action - action to be peformed on current race
 */
-export default function reducer(state = fromJS(resetCurrentRace(NUMBER_OF_KARTS)), action) {	
+export default function reducer(state = resetCurrentRace(NUMBER_OF_KARTS), action) {	
 
 	switch (action.type) {
 
@@ -47,7 +47,7 @@ export default function reducer(state = fromJS(resetCurrentRace(NUMBER_OF_KARTS)
 			return fromJS(resetCurrentRace(NUMBER_OF_KARTS))
 
 		// -----------------------------------------------------
-		case UPDATE_RANKINGS:
+		case UPDATE_RANKINGS:			
 
 			//** create a helper array to sort karts by distance traveled (in descending order)
 			// array format (unsorted)
@@ -66,8 +66,6 @@ export default function reducer(state = fromJS(resetCurrentRace(NUMBER_OF_KARTS)
 			}	
 			//*		
 
-			console.log("rankingsCalc (before sort) = ", JSON.stringify(rankingsCalc, null, 2))
-
 			// array format (sorted)
 			//	[
 			//		{ kartId: 2, distance: 650 },
@@ -82,8 +80,6 @@ export default function reducer(state = fromJS(resetCurrentRace(NUMBER_OF_KARTS)
 					return -1;
 				return 0;  	
 			})
-
-			console.log("rankingsCalc (after sort) = ", JSON.stringify(rankingsCalc, null, 2))
 
 			//** use the helper array to update rankings for current race
 			let rankings = {}
@@ -166,6 +162,6 @@ export function resetCurrentRace(numberOfKarts) {
 		winnerId: null		
 	}
 
-	return currentRace
+	return fromJS(currentRace)
 
 }

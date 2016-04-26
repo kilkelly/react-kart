@@ -17,7 +17,7 @@ const LOG_RACE = "react-kart/raceLog/LOG_RACE"
 	@state - races logged so far
 	@action - actions to be performed on race log
 */
-export default function reducer(state = fromJS([]), action) {	
+export default function reducer(state = createLog(), action) {	
 
 	switch (action.type) {
 		case LOG_RACE:
@@ -32,7 +32,6 @@ export default function reducer(state = fromJS([]), action) {
 			//*						
 
 			// return a new array with the current race logged with the previous races
-			//return [race].concat(state)
 			return state.unshift(fromJS(race))
 
 		default:
@@ -57,3 +56,10 @@ export function logRace(race) {
 
 // OTHER
 // ----------------------------------------------------------------
+
+/**
+	Note: this function is exported as it is used by the unit test script also.
+*/
+export function createLog() {
+	return fromJS([])
+}

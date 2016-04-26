@@ -27,9 +27,9 @@ describe('"currentRace" reducer', () => {
 		it("started", () => {
 			const nextState = reducer(initialState, startRace(raceId, betAmount))			
 
-			expect(nextState.currentRaceId).to.equal(raceId)
-			expect(nextState.inProgress).to.equal(true)
-			expect(nextState.betAmount).to.equal(betAmount)
+			expect(nextState.get("currentRaceId")).to.equal(raceId)
+			expect(nextState.get("inProgress")).to.equal(true)
+			expect(nextState.get("betAmount")).to.equal(betAmount)
 		})
 
 		//--------------------------------------------------------
@@ -38,14 +38,14 @@ describe('"currentRace" reducer', () => {
 
 			//**
 			const prevState = clone(initialState)
-			prevState.inProgress = true
-			prevState.winnerId = null
+			prevState.set("inProgress", true)
+			prevState.set("winnerId", null)
 			//*
 
 			const nextState = reducer(prevState, endRace(kartId))			
 			
-			expect(nextState.inProgress).to.equal(false)
-			expect(nextState.winnerId).to.equal(kartId)
+			expect(nextState.get("inProgress")).to.equal(false)
+			expect(nextState.get("winnerId")).to.equal(kartId)
 		})
 
 		//--------------------------------------------------------
@@ -54,10 +54,10 @@ describe('"currentRace" reducer', () => {
 
 			const nextState = reducer(initialState, resetRace())						
 
-			expect(nextState.currentRaceId).to.equal(null)		
-			expect(nextState.inProgress).to.equal(false)
-			expect(nextState.betAmount).to.equal(0)
-			expect(nextState.winnerId).to.equal(null)
+			expect(nextState.get("currentRaceId")).to.equal(null)		
+			expect(nextState.get("inProgress")).to.equal(false)
+			expect(nextState.get("betAmount")).to.equal(0)
+			expect(nextState.get("winnerId")).to.equal(null)
 		})								
 	})		
 
@@ -73,21 +73,20 @@ describe('"currentRace" reducer', () => {
 			//	}
 			
 			let karts = createKarts(NUMBER_OF_KARTS, true)
-			for (let i = 1; i <= NUMBER_OF_KARTS; i = i + 1 ) {
-				karts[i].distance = i * 10
-			}
+			karts = karts.map((kart, i) => kart.set("distance", i * 10))
+
 			//*
-			
-			const nextState = reducer(initialState, updateRankings(karts))
+
+			const nextState = reducer(initialState, updateRankings(karts.toJS()))
 
 			//**
 			//	rankings should be as follows
 			//	#1 = kartid 3 = distance 30 
 			//	#2 = kartid 2 = distance 20 
-			//	#3 = kartid 1 = distance 10 
+			//	#3 = kartid 1 = distance 10 			
 
 			for (let i = 1; i <= NUMBER_OF_KARTS; i = i + 1) {
-				expect(nextState.rankings[i].kartId).to.equal((NUMBER_OF_KARTS + 1) - i)
+				expect(nextState.getIn(["rankings", i.toString(), "kartId"])).to.equal((NUMBER_OF_KARTS + 1) - i)
 			}			
 
 		})

@@ -19,7 +19,7 @@ const SET_SELECTED_KART = "react-kart/user/SET_SELECTED_KART"
 // REDUCER
 // ----------------------------------------------------------------
 
-export default function reducer(state = fromJS(createUser()), action) {
+export default function reducer(state = createUser(), action) {
 
 	switch (action.type) {
 		case WINS_INCREMENT_USER:		
@@ -92,11 +92,11 @@ export function setSelectedKart(kartId) {
 	Note: this function is exported as it is used by the unit test script also.
 */
 export function createUser() {
-	return {
+	return fromJS({
 		wins: 0,
 		losses: 0,
 		balance: 250,
 		races: 0,
 		selectedKart: null
-	}
+	})
 }

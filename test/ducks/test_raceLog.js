@@ -5,7 +5,7 @@ import clone from "clone"
 
 import { NUMBER_OF_KARTS } from "../../src/core/constants"
 
-import logRaceReducer,	{ logRace } from "../../src/ducks/raceLog"
+import logRaceReducer,	{ logRace, createLog } from "../../src/ducks/raceLog"
 
 import currentRaceReducer, { 
 	resetRace,
@@ -32,7 +32,7 @@ describe('"raceLog" reducer', () => {
 	user = userReducer(user, setSelectedKart(kartId))
 
 	//**
-	let karts = createKarts(NUMBER_OF_KARTS, true)
+	let karts = createKarts(NUMBER_OF_KARTS, true).toJS()
 
 	//**
 	let currentRace = {}
@@ -53,9 +53,9 @@ describe('"raceLog" reducer', () => {
 	describe("one race", () => {
 		it("logged successfully", () => {
 
-			const raceLog = logRaceReducer([], logRace(race))			
+			let raceLog = logRaceReducer(createLog(), logRace(race))			
 
-			expect(raceLog.length).to.equal(1)
+			expect(raceLog.size).to.equal(1)
 
 		})
 
@@ -67,14 +67,10 @@ describe('"raceLog" reducer', () => {
 
 		it("logged successfully", () => {
 
-			let raceLog = []
-			const numRacesToLog = 4
+			let raceLogFirstRace = logRaceReducer(createLog(), logRace(race))
+			let raceLogSecondRace = logRaceReducer(raceLogFirstRace, logRace(race))
 
-			for (let i = 0; i < numRacesToLog; i = i + 1) {
-				raceLog = logRaceReducer(raceLog, logRace(race))			
-			}
-
-			expect(raceLog.length).to.equal(numRacesToLog)
+			expect(raceLogSecondRace.size).to.equal(2)
 
 		})
 
