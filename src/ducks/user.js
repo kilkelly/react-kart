@@ -1,5 +1,7 @@
 "use strict"
 
+import { fromJS } from "immutable"
+
 // The Ducks File Structure for Redux
 // - https://medium.com/@scbarrus/the-ducks-file-structure-for-redux-d63c41b7035c#.6rrizzva3
 
@@ -17,28 +19,28 @@ const SET_SELECTED_KART = "react-kart/user/SET_SELECTED_KART"
 // REDUCER
 // ----------------------------------------------------------------
 
-export default function reducer(state = createUser(), action) {
+export default function reducer(state = fromJS(createUser()), action) {
 
 	switch (action.type) {
-		case WINS_INCREMENT_USER:
-			return Object.assign({}, state, { wins: state.wins + 1 })
+		case WINS_INCREMENT_USER:		
+			return state.set("wins", state.get("wins") + 1)
 		case LOSSES_INCREMENT_USER:
-			return Object.assign({}, state, { losses: state.losses + 1 })			
+			return state.set("losses", state.get("losses") + 1)
 		case BALANCE_ADD:
-			return Object.assign({}, state, { balance: state.balance + action.value })
+			return state.set("balance", state.get("balance") + action.value)			
 		case BALANCE_SUBTRACT:
 
-			let calculatedBalance = state.balance - action.value
-			let balance = (calculatedBalance < 10)
+			let calculatedBalance = state.get("balance") - action.value
+			let subtractedBalance = (calculatedBalance < 10)
 								? 10
 								: calculatedBalance
 
-			return Object.assign({}, state, { balance })			
+			return state.set("balance", subtractedBalance)
 
 		case RACES_INCREMENT:
-			return Object.assign({}, state, { races: state.races + 1 })			
+			return state.set("races", state.get("races") + 1)			
 		case SET_SELECTED_KART:
-			return Object.assign({}, state, { selectedKart: action.kartId })						
+			return state.set("selectedKart", action.kartId)						
 		default:
 			return state
 	}	

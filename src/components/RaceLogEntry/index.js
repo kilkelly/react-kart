@@ -21,7 +21,7 @@ const RaceLogEntry = React.createClass({
 	},
 
 	// -------------------------------------------------------------------------------
-	render: function() {
+	render: function() {		
 
 		let kartsDisplay = []
 		let resultsDisplay = []

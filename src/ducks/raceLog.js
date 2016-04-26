@@ -17,22 +17,7 @@ const LOG_RACE = "react-kart/raceLog/LOG_RACE"
 	@state - races logged so far
 	@action - actions to be performed on race log
 */
-export default function reducer(state = fromJS([{
-	raceId: 1,
-	results: {
-		1: {kartId: 2},
-		2: {kartId: 4},
-		3: {kartId: 6},
-		4: {kartId: 8},
-		5: {kartId: 1},
-		6: {kartId: 3},
-		7: {kartId: 5},
-		8: {kartId: 7}
-	},
-	selectedKart: 3,
-	betResult: -10,
-	odds: 0
-}]), action) {	
+export default function reducer(state = fromJS([]), action) {	
 
 	switch (action.type) {
 		case LOG_RACE:

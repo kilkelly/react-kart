@@ -10,7 +10,7 @@ import RaceTrack from "../components/RaceTrack"
 function mapStateToProps(state, ownProps) {
 	return {
 		karts: state.karts.toJS(),
-		user: state.user,
+		user: state.user.toJS(),
 		currentRace: state.currentRace.toJS()
 	}
 }

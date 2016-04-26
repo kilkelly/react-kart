@@ -9,7 +9,7 @@ import Play from "../components/Play"
 function mapStateToProps(state, ownProps) {	
 
 	return {
-		user: state.user,
+		user: state.user.toJS(),
 		karts: state.karts.toJS(),
 		currentRace: state.currentRace.toJS()
 	}

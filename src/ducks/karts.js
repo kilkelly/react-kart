@@ -27,22 +27,26 @@ const MOVE_KARTS_TO_START = "react-kart/karts/MOVE_KARTS_TO_START"
 */
 export default function reducer(state = fromJS(createKarts(NUMBER_OF_KARTS)), action) {	
 
+	let kartId		// used for temporary storage of kart id we are working with
+
 	switch (action.type) {
 		case WINS_INCREMENT_KART:
 
-			let wins = state.getIn([action.kartId, "wins"])
-			return state.setIn([action.kartId, "wins"], wins + 1)
+			kartId = action.kartId.toString()
+			let wins = state.getIn([kartId, "wins"])
+			return state.setIn([kartId, "wins"], wins + 1)
 
 		// -----------------------------------------------------
 		case LOSSES_INCREMENT_KART:
 
-			let losses = state.getIn([action.kartId, "losses"])
-			return state.setIn([action.kartId, "losses"], losses + 1)
+			kartId = action.kartId.toString()
+			let losses = state.getIn([kartId, "losses"])
+			return state.setIn([kartId, "losses"], losses + 1)
 
 		// -----------------------------------------------------
 		case MOVE_KART:
 			
-			let kartId = action.kartId.toString()
+			kartId = action.kartId.toString()
 			let distance = state.getIn([kartId, "distance"])									
 			return state.setIn([kartId, "distance"], distance + MOVE_KART_DISTANCE)	
 

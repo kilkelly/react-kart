@@ -66,6 +66,8 @@ export default function reducer(state = fromJS(resetCurrentRace(NUMBER_OF_KARTS)
 			}	
 			//*		
 
+			console.log("rankingsCalc (before sort) = ", JSON.stringify(rankingsCalc, null, 2))
+
 			// array format (sorted)
 			//	[
 			//		{ kartId: 2, distance: 650 },
@@ -74,8 +76,14 @@ export default function reducer(state = fromJS(resetCurrentRace(NUMBER_OF_KARTS)
 			// 		etc...
 			//	]
 			rankingsCalc.sort((a, b) => {
-				return a.distance < b.distance
+				if ( a.distance < b.distance )
+					return 1;
+				if ( a.distance > b.distance )
+					return -1;
+				return 0;  	
 			})
+
+			console.log("rankingsCalc (after sort) = ", JSON.stringify(rankingsCalc, null, 2))
 
 			//** use the helper array to update rankings for current race
 			let rankings = {}

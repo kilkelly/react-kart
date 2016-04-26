@@ -6,9 +6,9 @@ import App from "../components/App"
 function mapStateToProps(state, ownProps) {
 
 	return {
-		balance: state.user.balance,
-		wins: state.user.wins,
-		losses: state.user.losses
+		balance: state.user.get("balance"),
+		wins: state.user.get("wins"),
+		losses: state.user.get("losses"),
 	}
 }
 

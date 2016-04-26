@@ -7,7 +7,7 @@ import RaceResult from "../components/RaceResult"
 
 function mapStateToProps(state, ownProps) {
 	return {
-		user: state.user,
+		user: state.user.toJS(),
 		currentRace: state.currentRace.toJS(),
 		karts: state.karts.toJS()
 	}
