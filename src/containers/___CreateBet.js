@@ -8,6 +8,7 @@ function mapStateToProps(state, ownProps) {
 
 	return {
 		user: state.user.toJS(),
+		karts: state.karts.toJS(),
 		previousRaceId:
 			state.raceLog.size > 0 
 			? state.raceLog.first().toJS().raceId

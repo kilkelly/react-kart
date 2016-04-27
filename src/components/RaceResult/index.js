@@ -1,6 +1,12 @@
 "use strict"
 
 import React from "react"
+
+import { 
+	calculateWinnings,
+	calculateLoss
+} from "../../ducks/karts"
+
 import styles from "./styles.scss"
 
 // -------------------------------------------------------------------------------
@@ -41,8 +47,20 @@ const RaceResult = React.createClass({
 							Your new coin balance is {this.props.user.balance}
 							{
 								betWin								
-								? <span> (<span className={styles.won}>+{this.props.currentRace.betAmount}</span>)</span>
-								: <span> (<span className={styles.lost}>-{this.props.currentRace.betAmount}</span>)</span>
+								? <span> (<span className={styles.won}>+{
+									calculateWinnings(
+										this.props.karts[this.props.currentRace.winnerId],
+										this.props.currentRace.betAmount,
+										true
+									)
+									}</span>)</span>
+								: <span> (<span className={styles.lost}>-{
+									calculateLoss(
+										this.props.karts[this.props.currentRace.winnerId],
+										this.props.currentRace.betAmount,
+										true
+									)
+									}</span>)</span>
 							}
 						</div>						
 						<div>

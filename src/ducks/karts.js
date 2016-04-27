@@ -128,8 +128,8 @@ export function createKarts(numberOfKarts, testMode = false) {
 			id: i,
 			name: karts[i].name,
 		 	image: karts[i].image,
-		 	wins: 0,
-		 	losses: 0,
+		 	wins: karts[i].wins,
+		 	losses: karts[i].losses,
 		 	distance: 0
 		}
 	}
@@ -137,4 +137,48 @@ export function createKarts(numberOfKarts, testMode = false) {
 	return fromJS(initialState)
 }
 
+/**
+	Calculates a lucky value based on wins and losses
+	@wins - id of kart to calculate lucky index for
+	@losses - 
+*/
+export function lucky(wins, losses) {	
+	// prevent division by zero
+	if (wins + losses !== 0) {
+		return Math.floor(wins * 100 / (wins + losses))
+	} else {
+		return 0
+	}
+	
+}
+
+/**
+	Calculates a kart's winning
+	@kart - the kart to calculate winnings for
+	@betAmount - amount the user bet on the kart
+	@previous - calculate winnings before win was counted
+*/
+export function calculateWinnings(kart, betAmount, previous = false) {
+	let luckiness = lucky(kart.wins - (previous ? 1 : 0), kart.losses)
+	// a little bit more of a bonus for betting on a winner, more exciting!
+	let extra = 3
+	let winMultiplier = (100-luckiness) / 100		
+
+	// calculate projected winnings
+	return Math.floor(betAmount + (betAmount * winMultiplier * extra))	
+}
+
+/**
+	Calculates a kart's losses
+	@kart - the kart to calculate losses for
+	@betAmount - amount the user bet on the kart
+	@previous - calculate winnings before loss was counted
+*/
+export function calculateLoss(kart, betAmount, previous = false) {
+	let luckiness = lucky(kart.wins, kart.losses - (previous ? 1 : 0))
+	let lossMultiplier = luckiness / 100
+
+	// calculate projected winnings
+	return Math.floor(betAmount + (betAmount * lossMultiplier))	
+}
 

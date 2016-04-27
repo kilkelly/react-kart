@@ -9,6 +9,11 @@ import {
 	RACE_SPEED
 } from "../../core/constants"
 
+import { 
+	calculateWinnings,
+	calculateLoss
+} from "../../ducks/karts"
+
 import RaceLine from "../RaceLine"
 import styles from "./styles.scss"
 
@@ -53,17 +58,31 @@ const RaceTrack = React.createClass({
 			//  stop the race logic loop
 			clearInterval(this.state.race)			
 			
+			// calculate winnings/losses
+
+
+			// user bet on a winner
 			if (this.props.user.selectedKart === winner) {
-				// user bet on a winner
+
+				let winnings = calculateWinnings(
+					this.props.karts[this.props.user.selectedKart],
+					this.props.currentRace.betAmount
+				)
 
 				this.props.winsIncrementUser()
-				this.props.balanceAdd(this.props.currentRace.betAmount)
+				this.props.balanceAdd(winnings)
 
-			} else {
-				// user bet on a loser
+			} 
+			// user bet on a loser
+			else {		
+
+				let losses = calculateLoss(
+					this.props.karts[this.props.user.selectedKart],
+					this.props.currentRace.betAmount
+				)
 
 				this.props.lossesIncrementUser()
-				this.props.balanceSubtract(this.props.currentRace.betAmount)
+				this.props.balanceSubtract(losses)
 
 			}
 

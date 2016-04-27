@@ -2,6 +2,7 @@
 
 import React from "react"
 import { NUMBER_OF_KARTS } from "../../core/constants"
+import { lucky } from "../../ducks/karts"
 import styles from "./styles.scss"
 
 // -------------------------------------------------------------------------------
@@ -16,7 +17,7 @@ const KartSelectedStats = ({ selectedKart }) => {
 						<span className={styles.selected}>{selectedKart.name}</span>
 					</div>
 					<div>Wins: {selectedKart.wins} Losses: {selectedKart.losses}</div>													
-					<div>Lucky Index: {_calculateLuckyIndex(selectedKart)}%</div>													
+					<div>Lucky: {lucky(selectedKart.wins, selectedKart.losses)}% of the time</div>													
 				</div>
 				: ""
 			}
@@ -25,19 +26,6 @@ const KartSelectedStats = ({ selectedKart }) => {
 
 }
 
-/**
-	Calculates how lucky this kart is in percentage terms
-	@kartId - id of kart to calculate lucky index for
-*/
-function _calculateLuckyIndex(kart) {	
-	// prevent division by zero
-	if (kart.wins + kart.losses !== 0) {
-		return Math.floor(kart.wins * 100 / (kart.wins + kart.losses))
-	} else {
-		return 0
-	}
-	
-}
 
 export default KartSelectedStats
 

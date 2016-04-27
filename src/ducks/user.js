@@ -19,7 +19,7 @@ const SET_SELECTED_KART = "react-kart/user/SET_SELECTED_KART"
 // REDUCER
 // ----------------------------------------------------------------
 
-export default function reducer(state = createUser(), action) {
+export default function reducer(state = createUser(), action) {	
 
 	switch (action.type) {
 		case WINS_INCREMENT_USER:		
