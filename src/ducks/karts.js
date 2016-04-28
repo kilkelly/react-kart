@@ -161,7 +161,7 @@ export function lucky(wins, losses) {
 export function calculateWinnings(kart, betAmount, previous = false) {
 	let luckiness = lucky(kart.wins - (previous ? 1 : 0), kart.losses)
 	// a little bit more of a bonus for betting on a winner, more exciting!
-	let extra = 3
+	let extra = 5
 	let winMultiplier = (100-luckiness) / 100		
 
 	// calculate projected winnings

@@ -26,27 +26,42 @@ const RaceLogEntry = React.createClass({
 		let kartsDisplay = []
 		let resultsDisplay = []
 
+		let wonBet = this.props.entry.betResult > 0
+					? true
+					: false
+
+		//**
 		for (let i = 1; i <= NUMBER_OF_KARTS; i = i + 1) {							
+
+			// is this the kart that the user selected during the race?
+			let selected = this.props.entry.selectedKart === this.props.entry.results[i].kartId			
+
+			let kartStyle = styles.kart
+			kartStyle += selected ? (" " + styles.selected) : ""								
+
 			kartsDisplay.push(				
 				<div key={i} className={styles.cell}>
-				<img
-					className={styles.img}
-					src={this.props.karts[this.props.entry.results[i].kartId].image}
-					/>
+					<img
+						className={kartStyle}
+						src={this.props.karts[this.props.entry.results[i].kartId].image}
+						/>
 				</div>)
-		}
 
-		for (let i = 1; i <= NUMBER_OF_KARTS; i = i + 1) {							
 			resultsDisplay.push(				
 				<div key={i} className={styles.cell}>
 					{i + this._numberSuffix(i)}
+					{selected ? " (selected)" : ""}
 				</div>)
 		}			
+		//*
+
+
 
 		return (
-			<div>
+			<div id={styles.wrapper}>
 				<div>
 					Race #{this.props.entry.raceId}
+					(<span className={wonBet ? styles.won : styles.lost}>{this.props.entry.betResult}</span> Coins)
 				</div>
 				<div className={styles.table}>
 					<div className={styles.row}>

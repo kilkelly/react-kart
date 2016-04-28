@@ -49,14 +49,14 @@ const RaceResult = React.createClass({
 								betWin								
 								? <span> (<span className={styles.won}>+{
 									calculateWinnings(
-										this.props.karts[this.props.currentRace.winnerId],
+										this.props.karts[this.props.user.selectedKart],
 										this.props.currentRace.betAmount,
 										true
 									)
 									}</span>)</span>
 								: <span> (<span className={styles.lost}>-{
 									calculateLoss(
-										this.props.karts[this.props.currentRace.winnerId],
+										this.props.karts[this.props.user.selectedKart],
 										this.props.currentRace.betAmount,
 										true
 									)

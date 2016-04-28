@@ -1,6 +1,11 @@
 /*RaceLogEntry*/
 
+#wrapper {
+	margin: 20px 0px 20px 0px;
+}
+
 .table {	
+	border-spacing: 0.5rem;
 	display: table;
 }
 
@@ -13,6 +18,22 @@
 	text-align: center;	
 }
 
-.img {
-	
+.kart {
+	border: 5px solid #EEE;	
+	max-width: 7rem;	
+	max-height: 7rem;
+	width: 100%;
+}
+
+.selected {
+	border: 5px dotted #F6F;
+}
+
+
+.won {
+	color: green;
+}
+
+.lost {
+	color: red;
 }

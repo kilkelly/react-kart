@@ -54,7 +54,10 @@ const RaceTrack = React.createClass({
 
 		//** Is there a winner? If so then end the race
 		let winner = this._winner()
-		if (winner) {					
+		if (winner) {			
+
+			let winnings, losses
+
 			//  stop the race logic loop
 			clearInterval(this.state.race)			
 			
@@ -64,7 +67,7 @@ const RaceTrack = React.createClass({
 			// user bet on a winner
 			if (this.props.user.selectedKart === winner) {
 
-				let winnings = calculateWinnings(
+				winnings = calculateWinnings(
 					this.props.karts[this.props.user.selectedKart],
 					this.props.currentRace.betAmount
 				)
@@ -76,7 +79,7 @@ const RaceTrack = React.createClass({
 			// user bet on a loser
 			else {		
 
-				let losses = calculateLoss(
+				losses = calculateLoss(
 					this.props.karts[this.props.user.selectedKart],
 					this.props.currentRace.betAmount
 				)
@@ -102,11 +105,11 @@ const RaceTrack = React.createClass({
 			this.props.logRace({
 				raceId: this.props.currentRace.currentRaceId,
 				results: this.props.currentRace.rankings,
-				selectedKart: this.props.user.selectedKart,
+				selectedKart: this.props.user.selectedKart,				
 
-				betResult: 	this.props.currentRace.winnerId === this.props.user.selectedKart
-							? this.props.currentRace.betAmount
-							: -this.props.currentRace.betAmount,
+				betResult: 	this.props.user.selectedKart === winner
+							? winnings
+							: -losses,
 
 				odds: 0			
 
