@@ -1,0 +1,14 @@
+react-kart@1.0.0 C:\Users\frank\Desktop\github-repositories\kilkelly\react-kart
+└─┬ UNMET PEER DEPENDENCY redux-persist@2.0.1
+  ├─┬ lodash.foreach@3.0.3 
+  │ ├── lodash._arrayeach@3.0.0 
+  │ ├─┬ lodash._baseeach@3.0.4 
+  │ │ └─┬ lodash.keys@3.1.2 
+  │ │   └── lodash._getnative@3.9.1 
+  │ ├── lodash._bindcallback@3.0.1 
+  │ └── lodash.isarray@3.0.4 
+  └─┬ lodash.isplainobject@3.2.0 
+    ├── lodash._basefor@3.0.3 
+    ├── lodash.isarguments@3.0.8 
+    └── lodash.keysin@3.0.8 
+

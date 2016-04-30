@@ -1,5 +1,7 @@
 "use strict"
 
+export const APP_NAME = "reactkart"
+
 export const NUMBER_OF_KARTS = 8
 
 export const RACE_DISTANCE = 100		// the distance length of a race

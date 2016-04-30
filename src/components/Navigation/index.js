@@ -28,13 +28,10 @@ const Navigation = ({ balance, wins, losses }) => {
 			</nav>
 			<div id={styles.balanceContainer}>
 				<div>
-					Coin Balance: <span id={styles.balance}>{balance}</span>
+					Coin Balance: <span className="coinBalance">{balance}</span>
 				</div>
 				<div>
-					Wins: <span id={styles.balance}>{wins}</span>
-				</div>
-				<div>
-					Losses: <span id={styles.balance}>{losses}</span>
+					Wins: <span id={styles.balance}>{wins}</span> &nbsp; Losses: <span id={styles.balance}>{losses}</span>
 				</div>									
 			</div>
 		</div>

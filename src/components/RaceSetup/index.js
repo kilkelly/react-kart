@@ -12,7 +12,7 @@ const RaceSetup = React.createClass({
 	
 	render: function() {
 
-		return (
+		return (			
 			<div className={styles.table}>
 				<div className={styles.cell}>	
 

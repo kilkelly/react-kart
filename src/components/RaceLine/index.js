@@ -12,7 +12,7 @@ const RaceLine = React.createClass({
 			height: "auto",
 			left: this.props.distanceTraveled + "%",
 			position: "relative",			
-			width: "5%",
+			width: "6%",
 		}
 		
 		return (

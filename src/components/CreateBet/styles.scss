@@ -1,7 +1,23 @@
 /*CreateBet*/
 
 #betAmount {
+	font-size: 1rem;
+	font-weight: bold;
 	margin-left: 0.5rem;
-	padding: 0.5rem;
-	width: 2rem;
+	padding: 0.3rem;
+	width: 2.5rem;
+}
+
+#wrapper {
+	padding-left: 1rem;
+	padding-right: 1rem;
+}
+
+#startRace {
+	background-color: "#3F5B90";
+	border-radius: 0.3rem;
+	color: #FFF;
+	font-family: inherit;
+	font-size: 1rem;		
+	padding: 0.3rem;
 }

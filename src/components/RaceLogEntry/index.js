@@ -50,7 +50,7 @@ const RaceLogEntry = React.createClass({
 			resultsDisplay.push(				
 				<div key={i} className={styles.cell}>
 					{i + this._numberSuffix(i)}
-					{selected ? " (selected)" : ""}
+					{selected ? " (you)" : ""}
 				</div>)
 		}			
 		//*
@@ -61,7 +61,7 @@ const RaceLogEntry = React.createClass({
 			<div id={styles.wrapper}>
 				<div>
 					Race #{this.props.entry.raceId}
-					(<span className={wonBet ? styles.won : styles.lost}>{this.props.entry.betResult}</span> Coins)
+					(<span className={wonBet ? "win" : "lose"}>{this.props.entry.betResult}</span> Coins)
 				</div>
 				<div className={styles.table}>
 					<div className={styles.row}>

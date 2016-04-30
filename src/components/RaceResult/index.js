@@ -39,22 +39,22 @@ const RaceResult = React.createClass({
 							You 
 							{
 								betWin
-								? <span> <span className={styles.won}>won</span> your bet :)</span>
-								: <span> <span className={styles.lost}>lost</span> your bet :(</span>
+								? <span> <span className="win">won</span> your bet :)</span>
+								: <span> <span className="lose">lost</span> your bet :(</span>
 							}
 						</div>
 						<div>
-							Your new coin balance is {this.props.user.balance}
+							Your new coin balance is <span className="coinBalance">{this.props.user.balance}</span>
 							{
 								betWin								
-								? <span> (<span className={styles.won}>+{
+								? <span> (<span className="win">+{
 									calculateWinnings(
 										this.props.karts[this.props.user.selectedKart],
 										this.props.currentRace.betAmount,
 										true
 									)
 									}</span>)</span>
-								: <span> (<span className={styles.lost}>-{
+								: <span> (<span className="lose">-{
 									calculateLoss(
 										this.props.karts[this.props.user.selectedKart],
 										this.props.currentRace.betAmount,

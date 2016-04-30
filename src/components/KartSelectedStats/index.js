@@ -9,15 +9,16 @@ import styles from "./styles.scss"
 const KartSelectedStats = ({ selectedKart }) => {
 	
 	return (
-		<div>
+		<div id={styles.wrapper}>
 			{
 				(selectedKart)
 				? <div className={styles.message}>
+					<div>You have selected</div>													
 					<div>
 						<span className={styles.selected}>{selectedKart.name}</span>
 					</div>
-					<div>Wins: {selectedKart.wins} Losses: {selectedKart.losses}</div>													
-					<div>Lucky: {lucky(selectedKart.wins, selectedKart.losses)}% of the time</div>													
+					<div>Wins: <span className={styles.bold}>{selectedKart.wins}</span> Losses: <span className={styles.bold}>{selectedKart.losses}</span></div>													
+					<div>Lucky: <span className={styles.bold}>{lucky(selectedKart.wins, selectedKart.losses)}%</span> of the time</div>													
 				</div>
 				: ""
 			}

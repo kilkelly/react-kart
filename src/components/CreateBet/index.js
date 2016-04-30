@@ -120,28 +120,28 @@ const CreateBet = React.createClass({
 				{
 					this.props.user.selectedKart
 
-					? <div>
-						<div>Coin Balance: {this.props.user.balance}</div>
+					? <div id={styles.wrapper}>
 						<div>
+							Coin Balance: <span className="coinBalance">{this.props.user.balance}</span> &nbsp;&nbsp;
 							Enter Bet:  
 							<input 
 								ref="betAmount"
 								type="text"
 								id={styles.betAmount}
 								defaultValue={this.state.initialBet}
-								onChange={this._betChanged}/> Coins							
+								onChange={this._betChanged}/> Coins	&nbsp;&nbsp;								
 						</div>
 						<div>
-							{this.state.projectedWinnings ? <span>Projected Winnings: {this.state.projectedWinnings}</span> : ""}
+							{this.state.invalidBet ? <span className="error">Enter bet between 1 - {this.props.user.balance} Coins</span> : ""}						
+						</div>
+						<div>
+							{this.state.projectedWinnings ? <span>Projected Winnings: {this.state.projectedWinnings}</span> : ""} Coins
 						</div>						
 						<div>
-							{this.state.projectedLoss ? <span>Projected Loss: {this.state.projectedLoss}</span> : ""}							
+							{this.state.projectedLoss ? <span>Projected Loss: {this.state.projectedLoss}</span> : ""} Coins							
 						</div>								
 						<div>
-							{this.state.invalidBet ? <span>Invalid bet amount, enter 1 - {this.props.user.balance}</span> : ""}
-						</div>
-						<div>
-							<button onClick={this._startRace} disabled={this.state.invalidBet}>
+							<button className={styles.startRace} onClick={this._startRace} disabled={this.state.invalidBet}>
 								Start Race!
 							</button>
 						</div>

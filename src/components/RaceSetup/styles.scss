@@ -2,12 +2,8 @@
 
 @import "../../core/constants";
 
-.table {
-	display: block;		
-}
-
-.cell {
-	display: block;	
+.table, .cell {
+	display: block;			
 }
 
 /*Responsive Styles*/
@@ -20,6 +16,8 @@
 
 	.cell {
 		display: table-cell;	
+		vertical-align: top;
+		width: 50%;		
 	}
 
 }

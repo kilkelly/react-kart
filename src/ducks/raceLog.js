@@ -17,7 +17,7 @@ const LOG_RACE = "react-kart/raceLog/LOG_RACE"
 	@state - races logged so far
 	@action - actions to be performed on race log
 */
-export default function reducer(state = createLog(), action) {	
+export default function reducer(state = createRaceLog(), action) {	
 
 	switch (action.type) {
 		case LOG_RACE:
@@ -60,6 +60,6 @@ export function logRace(race) {
 /**
 	Note: this function is exported as it is used by the unit test script also.
 */
-export function createLog() {
+export function createRaceLog() {
 	return fromJS([])
 }
