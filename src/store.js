@@ -15,24 +15,58 @@ import { createRaceLog } from "./ducks/raceLog"
 let middleware = [
 	//createLogger(),
 	persistRedux({
-		appName: APP_NAME,
+		namespace: APP_NAME,
 		reducers: ["user", "karts", "raceLog"]
 	})	
 ]
 
 const finalCreateStore = applyMiddleware(...middleware)(createStore)
-const store = finalCreateStore(rootReducer, {
-	user: loadFromLocalStorage("user") || createUser(),
-	karts: loadFromLocalStorage("karts") || createKarts(NUMBER_OF_KARTS),
-	raceLog: loadFromLocalStorage("raceLog") || createRaceLog()
-})
+const store = finalCreateStore(
+	rootReducer,
+	loadReduxState({
+		reducers: ["user", "karts", "raceLog"],
+		namespace: APP_NAME,
+		immutablejs: true // using immutable.js structures
+	})
+)
+// const store = finalCreateStore(rootReducer, {
+// 	user: loadImmutableFromLocalStorage("user", createUser()),
+// 	karts: loadImmutableFromLocalStorage("karts", createKarts(NUMBER_OF_KARTS)),
+// 	raceLog: loadImmutableFromLocalStorage("raceLog", createRaceLog())
+// })
 
-//const store = finalCreateStore(rootReducer, {})
+function loadReduxState(config) {	
 
-function loadFromLocalStorage(key) {
-	return localStorage[APP_NAME + "_" + key] 
-			? fromJS(JSON.parse(localStorage[APP_NAME + "_" + key]))
-			: null
+	var initialState = {}
+	var namespace = ""
+	var immutablejs = false
+
+	if (!config.hasOwnProperty("reducers")) {
+		throw new Error("Reducers not provided")
+	}
+
+	if (config.hasOwnProperty("namespace")) {
+		namespace = config.namespace + "_"
+	}
+
+	if (config.hasOwnProperty("immutablejs")) {
+		immutablejs = config.immutablejs
+	}	
+
+	config.reducers.forEach(function(reducer) {		
+
+		if (localStorage[namespace + reducer]) {
+			if (immutablejs) {
+				initialState[reducer] = fromJS(JSON.parse(localStorage[namespace + reducer]))
+			}
+			else {
+				initialState[reducer] = JSON.parse(localStorage[namespace + reducer])
+			}
+
+		}		
+	})	
+
+	return initialState
 }
 
 

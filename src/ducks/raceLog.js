@@ -2,6 +2,8 @@
 
 import { fromJS } from "immutable"
 
+import { RACE_LOG_SIZE } from "../core/constants"
+
 // The Ducks File Structure for Redux
 // - https://medium.com/@scbarrus/the-ducks-file-structure-for-redux-d63c41b7035c#.6rrizzva3
 
@@ -31,8 +33,14 @@ export default function reducer(state = createRaceLog(), action) {
 			race.odds = action.race.odds
 			//*						
 
-			// return a new array with the current race logged with the previous races
-			return state.unshift(fromJS(race))
+			if (state.size >= RACE_LOG_SIZE) {
+				// Return a new array with the current race logged with the previous races.
+				// Oldest race is popped off the end to stay within maximum race log size.
+				return state.pop().unshift(fromJS(race))
+			} else {
+				// return a new array with the current race logged with the previous races
+				return state.unshift(fromJS(race))
+			}
 
 		default:
 			return state

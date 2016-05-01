@@ -1,8 +1,10 @@
 "use strict"
 
 import React from "react"
+import { RACE_LOG_SIZE } from "../../core/constants"
 import styles from "./styles.scss"
 import RaceLogEntry from "../RaceLogEntry"
+
 
 // -------------------------------------------------------------------------------
 const RaceLog = React.createClass({
@@ -11,9 +13,18 @@ const RaceLog = React.createClass({
 
 		return (
 			<div>
-				{this.props.raceLog.map((entry, index) => {
+				<p>Your last {RACE_LOG_SIZE} races:</p>
+				{
+				
+				this.props.raceLog.length > 0
+
+				? this.props.raceLog.map((entry, index) => {
 					return <RaceLogEntry key={index} entry={entry} karts={this.props.karts}/>
-				})}
+				})
+
+				: <p>No races yet!</p> 
+
+				}
 			</div>			
 		)
 

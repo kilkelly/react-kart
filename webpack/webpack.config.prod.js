@@ -21,7 +21,7 @@ module.exports = {
 	output: {
 		path: assetsPath,
 		filename: "[name].js",
-		publicPath: "/"
+		publicPath: ""
 	},
 
 	module: {
@@ -57,11 +57,20 @@ module.exports = {
 	},	
 
 	plugins: [		
+	    // Order the modules and chunks by occurrence.
+	    // This saves space, because often referenced modules
+	    // and chunks get smaller ids.
+	    new webpack.optimize.OccurenceOrderPlugin(),		
 		new HtmlWebpackPlugin({
 			title: "ReactKart",
 			template: "template.html"
 		}),
 		new ExtractTextPlugin('[contenthash].css', { allChunks: true }),
+	    new webpack.optimize.UglifyJsPlugin({
+	    	compressor: {
+	    		warnings:false
+	    	}
+	    }),		
 		new webpack.DefinePlugin({
 			'process.env': { 
 				NODE_ENV: JSON.stringify(process.env.NODE_ENV || 'production') 
