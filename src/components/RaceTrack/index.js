@@ -138,12 +138,13 @@ const RaceTrack = React.createClass({
 					key={i}
 					kartImage={this.props.karts[i].image}
 					distanceTraveled={this.props.karts[i].distance * 100 / RACE_DISTANCE}
-					selected={this.props.karts[i].id === this.props.user.selectedKart} />
+					selected={this.props.karts[i].id === this.props.user.selectedKart} 
+					winner={this.props.currentRace.winnerId === this.props.karts[i].id} />
 			)		
 		}
 
 		return (		
-			<div>
+			<div id={styles.wrapper}>
 				{raceLines}
 			</div>	
 		)

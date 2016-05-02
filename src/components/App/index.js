@@ -2,6 +2,7 @@
 
 import React from "react"
 import Navigation from "../Navigation"
+import Footer from "../Footer"
 import styles from "./styles.scss"
 
 // -------------------------------------------------------------------------------
@@ -16,6 +17,7 @@ const App = React.createClass({
 					losses={this.props.losses} />
 
 				{this.props.children}
+				<Footer />
 			</div>
 		)		
 	}

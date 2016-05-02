@@ -27,11 +27,11 @@ const RaceResult = React.createClass({
 		let betWin = this.props.currentRace.winnerId === this.props.user.selectedKart
 
 		return (
-			<div>
+			<div id={styles.wrapper}>
 				{
 					this.props.currentRace.winnerId
 
-					? <div>
+					? <div id={styles.panel}>
 						<div>
 							Winner is {this.props.karts[this.props.currentRace.winnerId].name}!
 						</div>					
@@ -64,11 +64,11 @@ const RaceResult = React.createClass({
 							}
 						</div>						
 						<div>
-							<button onClick={this._nextRace}>Next Race</button>
+							<button id={styles.nextRace} onClick={this._nextRace}>Next Race</button>
 						</div>
 					</div>
 
-					: ""
+					: "Race in progress..."
 				}
 			</div>
 		)

@@ -1,10 +1,16 @@
 /*RaceLine*/
 
-.line, .selected {	
-	border-top: 2px dashed #AAA;	
+.line, .selected, .winner {		
+	border-left: 1px dotted #CCC;
+	border-right: 3px dotted #CCC;
+	border-top: 1px dashed #AAA;	
 	width: 100%;
 }
 
 .selected {	
-	background-color: #FFC;
+	background-color: #DDD;
+}
+
+.winner {	
+	background-color: #F9DB97;
 }

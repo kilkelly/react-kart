@@ -29,11 +29,7 @@ const store = finalCreateStore(
 		immutablejs: true // using immutable.js structures
 	})
 )
-// const store = finalCreateStore(rootReducer, {
-// 	user: loadImmutableFromLocalStorage("user", createUser()),
-// 	karts: loadImmutableFromLocalStorage("karts", createKarts(NUMBER_OF_KARTS)),
-// 	raceLog: loadImmutableFromLocalStorage("raceLog", createRaceLog())
-// })
+
 
 function loadReduxState(config) {	
 

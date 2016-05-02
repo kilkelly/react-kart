@@ -12,7 +12,7 @@ const KartSelectedStats = ({ selectedKart }) => {
 		<div id={styles.wrapper}>
 			{
 				(selectedKart)
-				? <div className={styles.message}>
+				? <div id={styles.panel}>
 					<div>You have selected</div>													
 					<div>
 						<span className={styles.selected}>{selectedKart.name}</span>

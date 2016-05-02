@@ -7,8 +7,8 @@
 :global(a) { color:#00F; }
 :global(.coinBalance) { color: #F39015; font-weight: bold;}
 :global(.error) { color: red; }
-:global(.win) { color: green; }
-:global(.lose) { color: red; }
+:global(.win) { color: green; font-weight: bold; }
+:global(.lose) { color: red; font-weight: bold; }
 
 :global(.row), :global(.column) {	box-sizing: border-box; }
 :global(.row::before), :global(.row::after) { content: " ";	display: table;	}

@@ -8,16 +8,23 @@
 	width: 2.5rem;
 }
 
-#wrapper {
-	padding-left: 1rem;
-	padding-right: 1rem;
+#panel {
+	background-color: #DDD;
+	border-radius: 10px;
+	color: #000;
+	margin: 10px 0px 0px 10px;
+	padding: 3px;
+	text-align:center;
 }
 
 #startRace {
-	background-color: "#3F5B90";
+	background-color: #3F5B90;
 	border-radius: 0.3rem;
 	color: #FFF;
 	font-family: inherit;
-	font-size: 1rem;		
+	font-size: 1.5rem;		
 	padding: 0.3rem;
+}
+
+#wrapper {
 }

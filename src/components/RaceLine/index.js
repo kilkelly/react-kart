@@ -8,15 +8,26 @@ const RaceLine = React.createClass({
 
 	render: function() {		
 
-		let imgStyle = {			
+		let imgStyle = {						
 			height: "auto",
 			left: this.props.distanceTraveled + "%",
 			position: "relative",			
-			width: "6%",
+			transition: "left 1s",
+			width: "6%"
 		}
 		
+		let thisStyle
+		if (this.props.winner) {
+			thisStyle = styles.winner
+		} else if (this.props.selected) {
+			thisStyle = styles.selected
+		}
+		else {
+			thisStyle = styles.line
+		}
+
 		return (
-			<div className={this.props.selected ? styles.selected : styles.line}>
+			<div className={thisStyle}>
 				<img src={this.props.kartImage} style={imgStyle} />
 			</div>
 		)

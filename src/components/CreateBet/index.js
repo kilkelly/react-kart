@@ -116,11 +116,11 @@ const CreateBet = React.createClass({
 	render: function() {
 
 		return (
-			<div>
+			<div id={styles.wrapper}>
 				{
 					this.props.user.selectedKart
 
-					? <div id={styles.wrapper}>
+					? <div id={styles.panel}>
 						<div>
 							Coin Balance: <span className="coinBalance">{this.props.user.balance}</span> &nbsp;&nbsp;
 							Enter Bet:  
@@ -141,7 +141,7 @@ const CreateBet = React.createClass({
 							{this.state.projectedLoss ? <span>Projected Loss: {this.state.projectedLoss}</span> : ""} Coins							
 						</div>								
 						<div>
-							<button className={styles.startRace} onClick={this._startRace} disabled={this.state.invalidBet}>
+							<button id={styles.startRace} onClick={this._startRace} disabled={this.state.invalidBet}>
 								Start Race!
 							</button>
 						</div>
