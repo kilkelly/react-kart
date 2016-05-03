@@ -1,3 +1,5 @@
+"use strict"
+
 var express = require("express")
 var webpack = require("webpack")
 var config = require("./webpack/webpack.config.dev")
@@ -21,7 +23,7 @@ app.listen(port, host, (err) => {
 	if (err) {
 		console.err(err.stack)
 	} else {
-		console.log("Dev server listening on http://" + host + ":" + port)
+		console.log("[DEVELOPMENT] ReactKart serving from http://" + host + ":" + port)
 	}
 })
 

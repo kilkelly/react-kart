@@ -5,9 +5,10 @@
   "main": "src/index.js",
   "scripts": {
     "test": "mocha --compilers js:babel-register --require ./test/test_helper.js --recursive",
+    "clean": "rimraf public/assets",
     "build": "webpack --config webpack/webpack.config.prod.js",
-    "start": "better-npm-run start",
-    "start:dev": "node devServer"
+    "start": "node server",
+    "start:dev": "node serverDev"
   },
   "betterScripts": {
     "start": {
@@ -39,7 +40,6 @@
   },
   "homepage": "https://github.com/kilkelly/react-kart#readme",
   "dependencies": {
-    "classnames": "^2.2.3",
     "clone": "^1.0.2",
     "immutable": "^3.8.1",
     "react": "^0.14.8",

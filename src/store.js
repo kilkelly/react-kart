@@ -6,7 +6,7 @@ import { syncHistory } from "react-router-redux"
 import { fromJS } from "immutable"
 
 import { APP_NAME, NUMBER_OF_KARTS } from "./core/constants"
-import persistRedux from "./middleware/persistRedux"
+import saveRedux from "./middleware/saveRedux"
 import rootReducer from "./ducks"
 import { createUser } from "./ducks/user"
 import { createKarts } from "./ducks/karts"
@@ -14,7 +14,7 @@ import { createRaceLog } from "./ducks/raceLog"
 
 let middleware = [
 	//createLogger(),
-	persistRedux({
+	saveRedux({
 		namespace: APP_NAME,
 		reducers: ["user", "karts", "raceLog"]
 	})	

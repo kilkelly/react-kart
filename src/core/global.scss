@@ -3,7 +3,7 @@
 
 /* Global styles, including mobile-first responsive grid */
 :global(html) { font-size:16px; }
-:global(body) { background-color: #FFF; font-family: 'Slabo 27px', serif; }
+:global(body) { background-color: #FFF; font-family: 'Slabo 27px', serif;}
 :global(a) { color:#00F; }
 :global(.coinBalance) { color: #F39015; font-weight: bold;}
 :global(.error) { color: red; }
