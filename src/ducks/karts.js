@@ -1,14 +1,14 @@
 "use strict"
 
+// The Ducks File Structure for Redux
+// - https://medium.com/@scbarrus/the-ducks-file-structure-for-redux-d63c41b7035c#.6rrizzva3
+
 import { fromJS } from "immutable"
 
 import { 
 	NUMBER_OF_KARTS,
 	MOVE_KART_DISTANCE
 } from "../core/constants"
-
-// The Ducks File Structure for Redux
-// - https://medium.com/@scbarrus/the-ducks-file-structure-for-redux-d63c41b7035c#.6rrizzva3
 
 
 // CONSTANTS
@@ -161,7 +161,7 @@ export function lucky(wins, losses) {
 export function calculateWinnings(kart, betAmount, previous = false) {
 	let luckiness = lucky(kart.wins - (previous ? 1 : 0), kart.losses)
 	// a little bit more of a bonus for betting on a winner, more exciting!
-	let extra = 5
+	let extra = 6
 	let winMultiplier = (100-luckiness) / 100		
 
 	// calculate projected winnings

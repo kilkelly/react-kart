@@ -1,13 +1,11 @@
+"use strict"
+
 import React from "react"
 import { Router, Route, IndexRoute } from "react-router"
 import ___App from "./containers/___App"
 import ___Play from "./containers/___Play"
 import ____RaceLog from "./containers/___RaceLog"
 import About from "./components/About"
-//import MyStatsContainer from "./containers/MyStatsContainer"
-//import KartStatsContainer from "./containers/KartStatsContainer"
-//import RaceLogContainer from "./containers/RaceLogContainer"
-//import About from "./components/About"
 
 
 export default (history) => {

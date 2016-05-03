@@ -4,6 +4,7 @@
 
 .table, .cell {
 	display: block;			
+	text-align: center;
 }
 
 /*Responsive Styles*/
@@ -15,8 +16,7 @@
 	}
 
 	.cell {
-		display: table-cell;	
-		text-align: center;
+		display: table-cell;			
 		vertical-align: top;
 		width: 50%;		
 	}

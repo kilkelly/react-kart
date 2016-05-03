@@ -8,24 +8,27 @@ import styles from "./styles.scss"
 const KartSelect = ({karts, selectedKart, selectKart}) => {
 
 	return (
-		<div className={styles.table}>
-			<div className={styles.row}>
-				<div className={styles.cell}>
-					{_kartColumn(karts[1], selectedKart, selectKart)}
-					{_kartColumn(karts[2], selectedKart, selectKart)}
-					{_kartColumn(karts[3], selectedKart, selectKart)}
-					{_kartColumn(karts[4], selectedKart, selectKart)}
+		<div>
+			<h4>Select your kart!</h4>
+			<div className={styles.table}>
+				<div className={styles.row}>
+					<div className={styles.cell}>
+						{_kartColumn(karts[1], selectedKart, selectKart)}
+						{_kartColumn(karts[2], selectedKart, selectKart)}
+						{_kartColumn(karts[3], selectedKart, selectKart)}
+						{_kartColumn(karts[4], selectedKart, selectKart)}
+					</div>	
 				</div>	
-			</div>	
-			<div className={styles.row}>					
-				<div className={styles.cell}>
-					{_kartColumn(karts[5], selectedKart, selectKart)}
-					{_kartColumn(karts[6], selectedKart, selectKart)}
-					{_kartColumn(karts[7], selectedKart, selectKart)}
-					{_kartColumn(karts[8], selectedKart, selectKart)}
-				</div>		
-			</div>	
-		</div>			
+				<div className={styles.row}>					
+					<div className={styles.cell}>
+						{_kartColumn(karts[5], selectedKart, selectKart)}
+						{_kartColumn(karts[6], selectedKart, selectKart)}
+						{_kartColumn(karts[7], selectedKart, selectKart)}
+						{_kartColumn(karts[8], selectedKart, selectKart)}
+					</div>		
+				</div>	
+			</div>			
+		</div>	
 	)	
 }
 

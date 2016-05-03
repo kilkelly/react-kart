@@ -21,7 +21,7 @@ const About = React.createClass({
 						<li>React for the view layer</li>
 						<li>
 							Redux for managing state (organised using <a href="https://github.com/erikras/ducks-modular-redux" target="_blank">Ducks: Redux Reducer Bundles</a>).
-							Parts of Redux state tree saved to local storage.
+							Parts of the Redux state tree are saved to local storage.
 						</li>
 						<li>Immutable.js data structures</li>
 						<li>React Router for routing</li>

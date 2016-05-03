@@ -1,12 +1,11 @@
 "use strict"
 
-import { fromJS } from "immutable"
-
-import { RACE_LOG_SIZE } from "../core/constants"
-
 // The Ducks File Structure for Redux
 // - https://medium.com/@scbarrus/the-ducks-file-structure-for-redux-d63c41b7035c#.6rrizzva3
 
+import { fromJS } from "immutable"
+
+import { RACE_LOG_SIZE } from "../core/constants"
 
 // CONSTANTS
 // ----------------------------------------------------------------

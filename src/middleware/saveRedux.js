@@ -4,6 +4,8 @@ const LOCAL_STORAGE = "localstorage"
 
 /**
 	Persists specified parts of the Redux state tree
+	Note: this is Redux middleware. Read this for an explanation:
+	http://redux.js.org/docs/advanced/Middleware.html
 
 	@namespace - namespace to prevent localstorage conflicts
 	@reducers - array of reducer names to persist
@@ -13,7 +15,7 @@ const saveRedux = ({ namespace = "", reducers = null, storage = LOCAL_STORAGE })
 
 	next(action)
 
-	// caller has not specified any reducers to persist
+	// caller has not specified any namespace
 	if (namespace === "") {
 		throw new Error("Property 'namespace' not provided for namespacing purposes. Please provide in config object argument when calling saveRedux function.", "color:red")
 		return

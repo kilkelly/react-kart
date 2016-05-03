@@ -1,3 +1,5 @@
+"use strict"
+
 var path = require("path")
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var HtmlWebpackPlugin = require('html-webpack-plugin');

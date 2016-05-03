@@ -31,7 +31,11 @@
     "Webpack",
     "CSSModules",
     "PostCSS",
-    "Babel"
+    "Babel",
+    "ImmutableJS",
+    "Express",
+    "Mocha",
+    "Chai"
   ],
   "author": "Frank Kilkelly",
   "license": "MIT",
