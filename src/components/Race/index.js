@@ -8,7 +8,7 @@ import styles from "./styles.scss"
 // -------------------------------------------------------------------------------
 const Race = React.createClass({
 
-	render: function() {
+	render: function() {		
 
 		return (
 			<div>

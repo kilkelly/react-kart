@@ -15,8 +15,7 @@ function mapStateToProps(state, ownProps) {
 
 function mapDispatchToProps(dispatch, ownProps) {
 	return {
-		resetRace: () => {dispatch(resetRace())},
-		moveKartsToStart: () => {dispatch(moveKartsToStart())}
+		resetRace: () => {dispatch(resetRace())}
 	}
 }
 

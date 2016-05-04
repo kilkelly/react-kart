@@ -12,13 +12,8 @@ import styles from "./styles.scss"
 // -------------------------------------------------------------------------------
 const RaceResult = React.createClass({
 
-	componentWillUnmount: function() {		
-		this.props.resetRace()		
-	},
-
 	_nextRace: function() {		
 		this.props.resetRace()
-		this.props.moveKartsToStart()
 	},
 
 	render: function() {

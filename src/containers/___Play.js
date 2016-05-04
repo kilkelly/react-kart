@@ -18,8 +18,7 @@ function mapStateToProps(state, ownProps) {
 function mapDispatchToActions(dispatch) {
 	return {
 		setSelectedKart: (kartId) => dispatch(setSelectedKart(kartId)),
-		resetRace: () => dispatch(resetRace()),
-		moveKartsToStart: () => dispatch(moveKartsToStart()),
+		resetRace: () => dispatch(resetRace())
 	}	
 }
 

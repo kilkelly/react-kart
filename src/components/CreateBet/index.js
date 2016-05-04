@@ -49,6 +49,9 @@ const CreateBet = React.createClass({
 
 	_startRace: function() {
 
+		this.props.resetRace()
+		this.props.moveKartsToStart()
+
 		let betAmount = +ReactDOM.findDOMNode(this.refs.betAmount).value 	
 		let raceId = this.props.previousRaceId + 1
 
@@ -134,10 +137,10 @@ const CreateBet = React.createClass({
 						<div>
 							{this.state.invalidBet ? <span className="error">Enter bet between 1 - {this.props.user.balance} Coins</span> : ""}						
 						</div>
-						<div>
+						<div className={styles.projected}>
 							{this.state.projectedWinnings ? <span>Projected Winnings: {this.state.projectedWinnings}</span> : ""} Coins
 						</div>						
-						<div>
+						<div className={styles.projected}>
 							{this.state.projectedLoss ? <span>Projected Loss: {this.state.projectedLoss}</span> : ""} Coins							
 						</div>								
 						<div>

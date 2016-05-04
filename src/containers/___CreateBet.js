@@ -1,7 +1,8 @@
 "use strict"
 
 import { connect } from "react-redux"
-import { startRace } from "../ducks/currentRace"
+import { resetRace, startRace } from "../ducks/currentRace"
+import { moveKartsToStart } from "../ducks/karts"
 import CreateBet from "../components/CreateBet"
 
 function mapStateToProps(state, ownProps) {	
@@ -18,9 +19,9 @@ function mapStateToProps(state, ownProps) {
 
 function mapDispatchToProps(dispatch, ownProps) {
 	return {
-		startRace : (raceId, betAmount) => {
-			dispatch(startRace(raceId, betAmount))
-		}
+		resetRace : () => dispatch(resetRace()),
+		moveKartsToStart : () => dispatch(moveKartsToStart()),
+		startRace : (raceId, betAmount) => dispatch(startRace(raceId, betAmount))
 	}
 }
 
