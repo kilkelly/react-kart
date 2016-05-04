@@ -4,7 +4,7 @@ ReactKart is a simple game made to improve my React & Redux skills. Choose your 
 
 Play the game!
 
-[screenshots here]
+![ReactKart Select Screen](http://i74.photobucket.com/albums/i265/gardenstew/reactkart-screen-1.png) ![ReactKart Race Results](http://i74.photobucket.com/albums/i265/gardenstew/reactkart-screen-2.png)
 
 ### Installation
 First install [node.js](http://nodejs.org/). Then:
