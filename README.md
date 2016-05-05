@@ -2,7 +2,7 @@
 
 ReactKart is a simple game made to improve my React & Redux skills. Choose your kart wisely based on how lucky they are, place a bet and try to increase your Coin Balance!
 
-<a href="http://monivea.com/react-kart/" target="_blank">Play ReactKart now!</a>
+[`Play ReactKart now!`](http://monivea.com/react-kart/)
 
 ![ReactKart Select Screen](http://i74.photobucket.com/albums/i265/gardenstew/reactkart-screen-1.png) ![ReactKart Race Results](http://i74.photobucket.com/albums/i265/gardenstew/reactkart-screen-2.png)
 
