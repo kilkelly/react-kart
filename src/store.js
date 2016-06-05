@@ -15,30 +15,16 @@ import { save, load, combineLoads, clear } from "./redux-localstorage-simple"
 
 let middleware = [
 	/*createLogger(),*/
-	/*save({
-		namespace: APP_NAME,
-		states: ["user", "karts", "raceLog"]
-	})*/	
-	/*save({
-		states: ["user", "karts", "raceLog", "routing"]
-	})*/
-	save()
+	save({ states: ["user", "karts", "raceLog"] })
 ]
 
 const finalCreateStore = applyMiddleware(...middleware)(createStore)
 const store = finalCreateStore(
 	rootReducer,	
-	/*load({
+	load({
 		states: ["user", "karts", "raceLog"],
 		immutablejs: true
-	})*/
-	/*combineLoads(
-		load({ states: ["user"], immutablejs: true }),
-		load({ states: ["karts"], immutablejs: true }),
-		load({ states: ["raceLog"], immutablejs: true }),
-		load({ states: ["routing"] })
-	)*/
-	load({ immutablejs: true })	
+	})
 )
 
 export default store
