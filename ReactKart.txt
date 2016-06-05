@@ -1,0 +1,157 @@
+
+Race button pressed	
+	currentRace/START_RACE
+		currentRace.inProgress = 1
+		currentRace.betAmount = args.betAmount
+currentRace.inProgress so load RaceTrack component
+	componentDidMount
+		Timeout 1: display "ready..."
+		Timeout 2: display "set..."
+		Timeout 3: display "GO!..."
+		Timeout 4: call currentRace/MOVE_KART until currentRace.winner is filled
+		Push all clearTimeouts to an array
+currentRace.winner so call currentRace/END_RACE		
+	currentRace/END_RACE
+		currentRace.inProgress = 1
+	races/LOG_RACE
+	Calculate win/loss amount
+	Display winner information and calulated win/loss amount in RaceOverArea
+If press NextRaceButton pressed or navigate away from page (componentWillUnmount)	
+	currentRace/RESET_RACE
+	Clear timeouts in timeout array
+		
+	
+State tree:
+-----------
+
+* user
+	wins
+	losses
+	balance
+	races
+	selectedKart
+
+* karts
+	id
+	name
+	image
+	wins
+	losses
+	distance	
+	
+* currentRace
+	currentRaceId
+	inProgress
+	rankings
+		1: <KART_ID>
+		2: <KART_ID>
+		...
+	betAmount
+	winnerId
+	
+* raceLog
+	[
+		{
+			raceId
+			results
+				1: <KART_ID>
+				2: <KART_ID>
+				...				
+			selectedKart
+			betResult
+			odds
+		}
+		...
+	]
+		
+		
+Action creators:
+---------------
+
+* user
+	winsIncrementUser
+	lossesIncrementUser
+	balanceAdd
+	balanceSubtract
+	racesIncrement
+	setSelectedKart
+	
+* karts
+	winsIncrementKart
+	lossesIncrementKart
+	moveKart
+	moveKartsToStart
+
+* currentRace
+	startRace
+	endRace
+	resetRace
+	updateRankings
+	
+* raceLog
+	logRace
+	
+-------------------------------------------
+
+RaceTrack
+	this.props.karts
+	this.props.user.selectedKart
+	this.props.currentRace
+
+	this.props.winsIncrementUser
+	this.props.winsIncrementKart
+	this.props.lossesIncrementUser				this.props.lossesIncrementKart
+	this.props.balanceAdd
+	this.props.balanceSubtract
+	this.props.updateRankings
+	this.props.logRace
+	this.props.endRace
+	this.props.moveKart
+
+
+RaceResult
+	this.props.currentRace.winnerId
+	this.props.currentRace.betAmount
+	this.props.user.selectedKart
+	this.props.user.balance
+	this.props.karts
+
+	this.props.resetRace
+	this.props.moveKartsToStart
+
+
+CreateBet
+	this.props.user.selectedKart
+	this.props.user.balance
+	this.props.karts
+
+	this.props.previousRaceId
+
+	this.props.startRace
+
+
+this.props.user
+this.props.karts
+this.props.currentRace
+
+this.props.winsIncrementUser
+this.props.winsIncrementKart
+this.props.lossesIncrementUser				this.props.lossesIncrementKart
+this.props.balanceAdd
+this.props.balanceSubtract
+this.props.updateRankings
+this.props.logRace
+this.props.endRace
+this.props.moveKart
+this.props.resetRace
+this.props.moveKartsToStart
+this.props.startRace	
+
+	
+	
+	
+	
+	
+	
+	
+	

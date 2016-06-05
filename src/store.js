@@ -6,64 +6,39 @@ import { syncHistory } from "react-router-redux"
 import { fromJS } from "immutable"
 
 import { APP_NAME, NUMBER_OF_KARTS } from "./core/constants"
-import saveRedux from "./middleware/saveRedux"
 import rootReducer from "./ducks"
 import { createUser } from "./ducks/user"
 import { createKarts } from "./ducks/karts"
 import { createRaceLog } from "./ducks/raceLog"
 
+import { save, load, combineLoads, clear } from "./redux-localstorage-simple"
+
 let middleware = [
-	//createLogger(),
-	saveRedux({
+	/*createLogger(),*/
+	/*save({
 		namespace: APP_NAME,
-		reducers: ["user", "karts", "raceLog"]
-	})	
+		states: ["user", "karts", "raceLog"]
+	})*/	
+	/*save({
+		states: ["user", "karts", "raceLog", "routing"]
+	})*/
+	save()
 ]
 
 const finalCreateStore = applyMiddleware(...middleware)(createStore)
 const store = finalCreateStore(
-	rootReducer,
-	loadReduxState({
-		reducers: ["user", "karts", "raceLog"],
-		namespace: APP_NAME,
-		immutablejs: true // using immutable.js structures
-	})
+	rootReducer,	
+	/*load({
+		states: ["user", "karts", "raceLog"],
+		immutablejs: true
+	})*/
+	/*combineLoads(
+		load({ states: ["user"], immutablejs: true }),
+		load({ states: ["karts"], immutablejs: true }),
+		load({ states: ["raceLog"], immutablejs: true }),
+		load({ states: ["routing"] })
+	)*/
+	load({ immutablejs: true })	
 )
-
-
-function loadReduxState(config) {	
-
-	var initialState = {}
-	var namespace = ""
-	var immutablejs = false
-
-	if (!config.hasOwnProperty("reducers")) {
-		throw new Error("Reducers not provided")
-	}
-
-	if (config.hasOwnProperty("namespace")) {
-		namespace = config.namespace + "_"
-	}
-
-	if (config.hasOwnProperty("immutablejs")) {
-		immutablejs = config.immutablejs
-	}	
-
-	config.reducers.forEach(function(reducer) {		
-
-		if (localStorage[namespace + reducer]) {
-			if (immutablejs) {
-				initialState[reducer] = fromJS(JSON.parse(localStorage[namespace + reducer]))
-			}
-			else {
-				initialState[reducer] = JSON.parse(localStorage[namespace + reducer])
-			}
-
-		}		
-	})	
-
-	return initialState
-}
-
 
 export default store
