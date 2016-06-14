@@ -11,7 +11,8 @@ import { createUser } from "./ducks/user"
 import { createKarts } from "./ducks/karts"
 import { createRaceLog } from "./ducks/raceLog"
 
-import { save, load, combineLoads, clear } from "./redux-localstorage-simple"
+import { save, load, combineLoads, clear } from "redux-localstorage-simple"
+//import { save, load, combineLoads, clear } from "./redux-localstorage-simple"
 
 let middleware = [
 	/*createLogger(),*/
@@ -25,6 +26,11 @@ const store = finalCreateStore(
 		states: ["user", "karts", "raceLog"],
 		immutablejs: true
 	})
+/*	combineLoads(
+		load({ states: ["user"], immutablejs: true }),
+		load({ states: ["karts"], immutablejs: true }),
+		load({ states: ["raceLog"], immutablejs: true })
+	)*/	
 )
 
 export default store

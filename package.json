@@ -6,7 +6,9 @@
   "scripts": {
     "test": "mocha --compilers js:babel-register --require ./test/test_helper.js --recursive",
     "clean": "rimraf public/assets",
+    "clean:lib": "rimraf lib",
     "build": "npm run clean && webpack --config webpack/webpack.config.prod.js",
+    "build:lib": "npm run clean:lib && babel src --out-dir lib",
     "start": "node server",
     "start:dev": "node serverDev"
   },
@@ -42,10 +44,12 @@
     "react-redux": "^4.4.1",
     "react-router": "^2.0.1",
     "react-router-redux": "^4.0.1",
-    "redux": "^3.3.1"
+    "redux": "^3.3.1",
+    "redux-localstorage-simple": "^1.0.1"
   },
   "devDependencies": {
     "autoprefixer": "^6.3.6",
+    "babel-cli": "^6.9.0",
     "babel-core": "^6.7.4",
     "babel-loader": "^6.2.4",
     "babel-plugin-react-transform": "^2.0.2",
