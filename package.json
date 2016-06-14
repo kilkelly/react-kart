@@ -6,9 +6,7 @@
   "scripts": {
     "test": "mocha --compilers js:babel-register --require ./test/test_helper.js --recursive",
     "clean": "rimraf public/assets",
-    "clean:lib": "rimraf lib",
     "build": "npm run clean && webpack --config webpack/webpack.config.prod.js",
-    "build:lib": "npm run clean:lib && babel src --out-dir lib",
     "start": "node server",
     "start:dev": "node serverDev"
   },
