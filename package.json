@@ -1,6 +1,6 @@
 {
   "name": "react-kart",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A fun kart betting game made with React!",
   "main": "src/index.js",
   "scripts": {
