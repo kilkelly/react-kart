@@ -14,23 +14,35 @@ import { createRaceLog } from "./ducks/raceLog"
 import { save, load, combineLoads, clear } from "redux-localstorage-simple"
 //import { save, load, combineLoads, clear } from "./redux-localstorage-simple"
 
-let middleware = [
-	/*createLogger(),*/
-	save({ states: ["user", "karts", "raceLog"] })
-]
+let store
 
-const finalCreateStore = applyMiddleware(...middleware)(createStore)
-const store = finalCreateStore(
-	rootReducer,	
-	load({
-		states: ["user", "karts", "raceLog"],
-		immutablejs: true
-	})
-/*	combineLoads(
-		load({ states: ["user"], immutablejs: true }),
-		load({ states: ["karts"], immutablejs: true }),
-		load({ states: ["raceLog"], immutablejs: true })
-	)*/	
-)
+export default function() {
+	if (typeof store === "object") {
+		console.log("Returning existing store")
+		return store
+	}
+	else {
 
-export default store
+		let middleware = [
+			/*createLogger(),*/
+			save({ states: ["user", "karts", "raceLog"] })
+		]
+
+		const finalCreateStore = applyMiddleware(...middleware)(createStore)
+		store = finalCreateStore(
+			rootReducer,	
+			load({
+				states: ["user", "karts", "raceLog"],
+				immutablejs: true
+			})
+		/*	combineLoads(
+				load({ states: ["user"], immutablejs: true }),
+				load({ states: ["karts"], immutablejs: true }),
+				load({ states: ["raceLog"], immutablejs: true })
+			)*/	
+		)
+
+		console.log("Creating store")
+		return store
+	}
+}

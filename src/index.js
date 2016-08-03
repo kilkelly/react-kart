@@ -11,14 +11,14 @@ import createRoutes from "./routes"
 
 // Create an enhanced history that syncs navigation events with the store
 //const history = syncHistoryWithStore(browserHistory, store)
-const history = syncHistoryWithStore(hashHistory, store)
+const history = syncHistoryWithStore(hashHistory, store())
 
 
 const routes = createRoutes(history)
 
 // render the app for the client
 render(
-	<Provider store={store}>
+	<Provider store={store()}>
 		{routes}
 	</Provider>,
 	document.getElementById("app")
