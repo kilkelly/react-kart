@@ -18,6 +18,13 @@ const LOSSES_INCREMENT_KART = "react-kart/karts/LOSSES_INCREMENT_KART"
 const MOVE_KART = "react-kart/karts/MOVE_KART"
 const MOVE_KARTS_TO_START = "react-kart/karts/MOVE_KARTS_TO_START"
 
+const toString = x => x.toString()
+const increment = x => x + 1
+
+const stringSafeUpdateIn = function (data, keyPath, updater) {
+	return data.updateIn(keyPath.map(toString), updater)
+}
+
 // REDUCER
 // ----------------------------------------------------------------
 
@@ -32,34 +39,36 @@ export default function reducer(state = createKarts(NUMBER_OF_KARTS), action) {
 	switch (action.type) {
 		case WINS_INCREMENT_KART:
 
-			kartId = action.kartId.toString()
+/*			kartId = action.kartId.toString()
 			let wins = state.getIn([kartId, "wins"])
-			return state.setIn([kartId, "wins"], wins + 1)
+			return state.setIn([kartId, "wins"], wins + 1)*/
+
+			return stringSafeUpdateIn(
+				state,
+				[action.kartId, "wins"],
+				increment
+			)	
 
 		// -----------------------------------------------------
 		case LOSSES_INCREMENT_KART:
 
-			kartId = action.kartId.toString()
-			let losses = state.getIn([kartId, "losses"])
-			return state.setIn([kartId, "losses"], losses + 1)
+			return stringSafeUpdateIn(
+				state,
+				[action.kartId, "losses"],
+				increment
+			)
 
 		// -----------------------------------------------------
-		case MOVE_KART:
-			
-			kartId = action.kartId.toString()
-			let distance = state.getIn([kartId, "distance"])									
-			return state.setIn([kartId, "distance"], distance + MOVE_KART_DISTANCE)	
+		case MOVE_KART:		
+
+			return stringSafeUpdateIn(
+				state,
+				[action.kartId, "distance"],
+				distance => distance + MOVE_KART_DISTANCE
+			)			
 
 		// -----------------------------------------------------
 		case MOVE_KARTS_TO_START:
-
-			// stateClone = clone(state) // clone state to avoid mutation
-
-			// for (let i = 1; i <= NUMBER_OF_KARTS; i = i + 1) {			
-			// 	state = state.setIn([action.kartId, "distance"], 0)
-			// }
-
-			// return state	
 
 			return state.map(kart => kart.set("distance", 0))
 

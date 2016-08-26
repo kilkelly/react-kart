@@ -4,8 +4,6 @@
   "description": "A fun kart betting game made with React!",
   "main": "src/index.js",
   "scripts": {
-    "test": "tape -r babel-register test/tape/**/*.js | tap-spec",
-    "test": "tape -r babel-register test/tape/**/*.js | faucet",
     "test": "mocha --compilers js:babel-register --require ./test/test_helper.js --recursive",
     "clean": "rimraf public/assets",
     "build": "npm run clean && webpack --config webpack/webpack.config.prod.js",
@@ -39,6 +37,7 @@
   "dependencies": {
     "clone": "^1.0.2",
     "immutable": "^3.8.1",
+    "ramda": "^0.22.1",
     "react": "^0.14.8",
     "react-dom": "^0.14.8",
     "react-redux": "^4.4.1",
