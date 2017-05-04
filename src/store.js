@@ -16,7 +16,7 @@ import { save, load, combineLoads, clear } from "redux-localstorage-simple"
 
 let middleware = [
 	/*createLogger(),*/
-	save({ states: ["user", "karts", "raceLog"] })
+	save({ states: ["user", "karts", "raceLog"], debounce: 500 })
 ]
 
 const finalCreateStore = applyMiddleware(...middleware)(createStore)
