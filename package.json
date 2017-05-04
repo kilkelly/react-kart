@@ -4,8 +4,6 @@
   "description": "A fun kart betting game made with React!",
   "main": "src/index.js",
   "scripts": {
-    "test": "tape -r babel-register test/tape/**/*.js | tap-spec",
-    "test": "tape -r babel-register test/tape/**/*.js | faucet",
     "test": "mocha --compilers js:babel-register --require ./test/test_helper.js --recursive",
     "clean": "rimraf public/assets",
     "build": "npm run clean && webpack --config webpack/webpack.config.prod.js",
@@ -45,7 +43,7 @@
     "react-router": "^2.0.1",
     "react-router-redux": "^4.0.1",
     "redux": "^3.3.1",
-    "redux-localstorage-simple": "^1.0.1"
+    "redux-localstorage-simple": "^1.3.1"
   },
   "devDependencies": {
     "autoprefixer": "^6.3.6",
